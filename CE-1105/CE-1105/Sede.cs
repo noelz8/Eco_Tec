@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 namespace CE_1105
 {
@@ -23,57 +24,44 @@ namespace CE_1105
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MiFormulario_FormClosing);
         }
 
-        private void ActivoInactivo_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Regresar_Click(object sender, EventArgs e)
         {
             if (_SedeCentro != null)
             {
                 _SedeCentro.Show();
-                this.Close();
+                this.Hide();
             }
         }
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
             // Recoge los datos de los controles
-            string textoTextBox1 = Identificacion.Text;
-            string textoTextBox2 = NombreSede.Text;
-            string textoTextBox3 = NumeroContacto.Text;
-            string seleccionComboBox = CProvincias.SelectedItem.ToString();
+            string IDE = Identificacion.Text;
+            string Nombre_Sede = NombreSede.Text;
+            string Contacto = NumeroContacto.Text;
+            string seleccionComboBox = CProvincias.SelectedItem != null ? CProvincias.SelectedItem.ToString() : "";
             bool estadoCheckBox = ActivoInactivo.Checked;
 
             ValidadorDatos validadorDatos = new ValidadorDatos();
 
             // Llama a la función de validación con los datos recogidos
-            string resultado = validadorDatos.ValidarDatos(textoTextBox1, textoTextBox2, textoTextBox3, seleccionComboBox, estadoCheckBox);
+            string resultado = validadorDatos.ValidarDatos(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
 
             // Determina si los datos son válidos basándote en el resultado
-            if (resultado.Contains("Activo") && resultado.Contains("Activo")) // Asume que "Activo" indica que los datos son válidos
+            // Determina si los datos son válidos basándote en el resultado
+            if (resultado.Contains("No válido"))
             {
-                // Si los datos son válidos, muestra un mensaje de éxito
-                MessageBox.Show($"Los datos son válidos.\nResultado de la validación: {resultado}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Si hay "No válido" en el resultado, muestra un mensaje de error
+                MessageBox.Show("Los datos no son válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                // Si los datos no son válidos, muestra un mensaje de error
-                MessageBox.Show("Los datos no son válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Si no hay "No válido" en el resultado, muestra un mensaje de éxito
+                LimpiarControles();
+                validadorDatos.EscribirDatosEnArchivo(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
+                MessageBox.Show($"Los datos son válidos.\nResultado de la validación: {resultado}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
 
-
-        private void CProvincias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Muestra un mensaje al usuario
-            MessageBox.Show("Este es un mensaje personalizado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void MiFormulario_FormClosing(object sender, FormClosingEventArgs e)
@@ -83,6 +71,15 @@ namespace CE_1105
             {
                 Application.Exit();
             }
+        }
+        private void LimpiarControles()
+        {
+            Identificacion.Clear();
+            NombreSede.Clear();
+            NumeroContacto.Clear();
+            // Limpiar otros controles según sea necesario
+            CProvincias.SelectedIndex = -1; // Selecciona la opción predeterminada
+            ActivoInactivo.Checked = false;
         }
     }
 }

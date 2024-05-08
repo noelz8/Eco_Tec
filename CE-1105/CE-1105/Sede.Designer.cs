@@ -57,7 +57,6 @@ namespace CE_1105
             CProvincias.Size = new Size(156, 27);
             CProvincias.TabIndex = 0;
             CProvincias.Text = "Provincias";
-            CProvincias.SelectedIndexChanged += CProvincias_SelectedIndexChanged;
             // 
             // ActivoInactivo
             // 
@@ -69,7 +68,6 @@ namespace CE_1105
             ActivoInactivo.TabIndex = 1;
             ActivoInactivo.Text = "Activo";
             ActivoInactivo.UseVisualStyleBackColor = true;
-            ActivoInactivo.CheckedChanged += ActivoInactivo_CheckedChanged;
             // 
             // LblIngresar
             // 
@@ -106,7 +104,6 @@ namespace CE_1105
             NombreSede.Name = "NombreSede";
             NombreSede.Size = new Size(176, 23);
             NombreSede.TabIndex = 5;
-            NombreSede.TextChanged += textBox2_TextChanged;
             // 
             // NumeroContacto
             // 
