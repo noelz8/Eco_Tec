@@ -36,13 +36,14 @@ namespace CE_1105
         private void Aceptar_Click(object sender, EventArgs e)
         {
             // Recoge los datos de los controles
-            string IDE = Identificacion.Text;
             string Nombre_Sede = NombreSede.Text;
             string Contacto = NumeroContacto.Text;
             string seleccionComboBox = CProvincias.SelectedItem != null ? CProvincias.SelectedItem.ToString() : "";
             bool estadoCheckBox = ActivoInactivo.Checked;
 
             ValidadorDatos validadorDatos = new ValidadorDatos();
+            // Genera una identificación única 
+            string IDE = GenerateUniqueKey();
 
             // Llama a la función de validación con los datos recogidos
             string resultado = validadorDatos.ValidarDatos(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
@@ -74,14 +75,45 @@ namespace CE_1105
         }
         private void LimpiarControles()
         {
-            Identificacion.Clear();
             NombreSede.Clear();
             NumeroContacto.Clear();
             // Limpiar otros controles según sea necesario
             CProvincias.SelectedIndex = -1; // Selecciona la opción predeterminada
             ActivoInactivo.Checked = false;
         }
+
+        private void CProvincias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        public static string GenerateUniqueKey()
+        {
+            // Implementación de la función
+            Random random = new Random();
+            string identifier = "";
+            for (int i = 0; i < 12; i++)
+            {
+                int number = random.Next(0, 36);
+                if (number < 10)
+                {
+                    identifier += Convert.ToChar(number + 48);
+                }
+                else
+                {
+                    if (number < 26)
+                    {
+                        identifier += Convert.ToChar(number + 65);
+                    }
+                    else
+                    {
+                        identifier += Convert.ToChar(number - 26 + 97);
+                    }
+                }
+            }
+            return "S-" + identifier;
+        }
     }
+
 }
 
 

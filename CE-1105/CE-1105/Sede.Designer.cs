@@ -34,10 +34,8 @@ namespace CE_1105
             LblIngresar = new Label();
             BtnAceptar = new Button();
             Ayuda = new HelpProvider();
-            Identificacion = new TextBox();
             NombreSede = new TextBox();
             NumeroContacto = new TextBox();
-            LblIdentificacion = new Label();
             LblNombreSede = new Label();
             LblUbicacion = new Label();
             LblContacto = new Label();
@@ -52,11 +50,12 @@ namespace CE_1105
             CProvincias.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CProvincias.FormattingEnabled = true;
             CProvincias.Items.AddRange(new object[] { "Alajuela", "Cartago", "Guanacaste", "Heredia", "Limón", "Puntarenas", "San José" });
-            CProvincias.Location = new Point(417, 130);
+            CProvincias.Location = new Point(301, 125);
             CProvincias.Name = "CProvincias";
             CProvincias.Size = new Size(156, 27);
             CProvincias.TabIndex = 0;
             CProvincias.Text = "Provincias";
+            CProvincias.SelectedIndexChanged += CProvincias_SelectedIndexChanged;
             // 
             // ActivoInactivo
             // 
@@ -90,43 +89,26 @@ namespace CE_1105
             BtnAceptar.UseVisualStyleBackColor = true;
             BtnAceptar.Click += Aceptar_Click;
             // 
-            // Identificacion
-            // 
-            Identificacion.Location = new Point(12, 130);
-            Identificacion.Name = "Identificacion";
-            Identificacion.Size = new Size(167, 23);
-            Identificacion.TabIndex = 4;
-            // 
             // NombreSede
             // 
             NombreSede.ForeColor = SystemColors.Desktop;
-            NombreSede.Location = new Point(214, 130);
+            NombreSede.Location = new Point(53, 130);
             NombreSede.Name = "NombreSede";
             NombreSede.Size = new Size(176, 23);
             NombreSede.TabIndex = 5;
             // 
             // NumeroContacto
             // 
-            NumeroContacto.Location = new Point(598, 134);
+            NumeroContacto.Location = new Point(535, 130);
             NumeroContacto.Name = "NumeroContacto";
             NumeroContacto.Size = new Size(176, 23);
             NumeroContacto.TabIndex = 6;
-            // 
-            // LblIdentificacion
-            // 
-            LblIdentificacion.AutoSize = true;
-            LblIdentificacion.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblIdentificacion.Location = new Point(31, 99);
-            LblIdentificacion.Name = "LblIdentificacion";
-            LblIdentificacion.Size = new Size(132, 23);
-            LblIdentificacion.TabIndex = 7;
-            LblIdentificacion.Text = "Identificacion";
             // 
             // LblNombreSede
             // 
             LblNombreSede.AutoSize = true;
             LblNombreSede.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblNombreSede.Location = new Point(214, 99);
+            LblNombreSede.Location = new Point(52, 99);
             LblNombreSede.Name = "LblNombreSede";
             LblNombreSede.Size = new Size(177, 23);
             LblNombreSede.TabIndex = 8;
@@ -136,7 +118,7 @@ namespace CE_1105
             // 
             LblUbicacion.AutoSize = true;
             LblUbicacion.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblUbicacion.Location = new Point(442, 99);
+            LblUbicacion.Location = new Point(323, 99);
             LblUbicacion.Name = "LblUbicacion";
             LblUbicacion.Size = new Size(99, 23);
             LblUbicacion.TabIndex = 9;
@@ -146,7 +128,7 @@ namespace CE_1105
             // 
             LblContacto.AutoSize = true;
             LblContacto.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LblContacto.Location = new Point(596, 99);
+            LblContacto.Location = new Point(535, 99);
             LblContacto.Name = "LblContacto";
             LblContacto.Size = new Size(192, 23);
             LblContacto.TabIndex = 10;
@@ -184,10 +166,8 @@ namespace CE_1105
             Controls.Add(LblContacto);
             Controls.Add(LblUbicacion);
             Controls.Add(LblNombreSede);
-            Controls.Add(LblIdentificacion);
             Controls.Add(NumeroContacto);
             Controls.Add(NombreSede);
-            Controls.Add(Identificacion);
             Controls.Add(BtnAceptar);
             Controls.Add(LblIngresar);
             Controls.Add(ActivoInactivo);
@@ -206,10 +186,8 @@ namespace CE_1105
         private Label LblIngresar;
         private Button BtnAceptar;
         private HelpProvider Ayuda;
-        private TextBox Identificacion;
         private TextBox NombreSede;
         private TextBox NumeroContacto;
-        private Label LblIdentificacion;
         private Label LblNombreSede;
         private Label LblUbicacion;
         private Label LblContacto;

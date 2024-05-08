@@ -8,14 +8,14 @@ public class ValidadorDatos
     public string ValidarDatos(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
     {
         // Llama a las funciones de validación para cada dato
-        string Identificacion = ValidarTexto(IDE); // Usa ValidarTexto para evaluar correctamente
+        //string Identificacion = GenerateUniqueKey(); // Usa ValidarTexto para evaluar correctamente
         string sedeValida = SedeCorrecta(Nombre_Sede); // SedeCorrecta retorna el string de la sede si es válido, null en caso contrario
         string contactoValido = ContactoV(Contacto); // Aplica la misma lógica para textoTextBox3
         string estadoSeleccion = ValidarSeleccion(seleccionComboBox); // Mantén la lógica original si deseas retornar null para selecciones vacías
         string estadoCheckBoxString = ValidarEstado(estadoCheckBox);
 
         // Construye el mensaje de resultado
-        string resultado = $"Identificacion: {Identificacion}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoSeleccion}, Provincia: {estadoCheckBoxString}";
+        string resultado = $"Identificacion: {IDE}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoSeleccion}, Provincia: {estadoCheckBoxString}";
 
         return resultado;
     }
@@ -78,7 +78,7 @@ public class ValidadorDatos
 
         using (StreamWriter writer = new StreamWriter(rutaArchivo, true)) // 'true' para agregar al final del archivo
         {
-            writer.Write($"{IDE}, {Nombre_Sede}, {Contacto}, {seleccionComboBox}, {estadoCheckBox}");
+            writer.Write($"{IDE}, {Nombre_Sede}, {Contacto}, {seleccionComboBox}, {estadoCheckBox}\n");
         }
     }
 
