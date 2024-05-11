@@ -74,7 +74,7 @@ public class ValidadorDatos
         string rutaCarpetaAplicacion = Application.StartupPath;
 
         // Construir la ruta completa del archivo
-        string rutaArchivo = Path.Combine(rutaCarpetaAplicacion, "datos.txt"); // Asegúrate de que el nombre del archivo sea único o maneja la sobrescritura según sea necesario
+        string rutaArchivo = Path.Combine(rutaCarpetaAplicacion, "Sedes.txt"); // Asegúrate de que el nombre del archivo sea único o maneja la sobrescritura según sea necesario
 
         using (StreamWriter writer = new StreamWriter(rutaArchivo, true)) // 'true' para agregar al final del archivo
         {

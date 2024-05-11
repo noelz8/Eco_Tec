@@ -31,6 +31,7 @@
             titulo = new Label();
             BCentro = new Button();
             BSede = new Button();
+            BtnRegresar1 = new Button();
             SuspendLayout();
             // 
             // titulo
@@ -58,7 +59,7 @@
             // BSede
             // 
             BSede.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BSede.Location = new Point(336, 94);
+            BSede.Location = new Point(336, 92);
             BSede.Name = "BSede";
             BSede.Size = new Size(132, 58);
             BSede.TabIndex = 2;
@@ -66,11 +67,23 @@
             BSede.UseVisualStyleBackColor = true;
             BSede.Click += BSede_Click;
             // 
+            // BtnRegresar
+            // 
+            BtnRegresar1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnRegresar1.Location = new Point(12, 174);
+            BtnRegresar1.Name = "BtnRegresar";
+            BtnRegresar1.Size = new Size(91, 37);
+            BtnRegresar1.TabIndex = 3;
+            BtnRegresar1.Text = "Regresar";
+            BtnRegresar1.UseVisualStyleBackColor = true;
+            BtnRegresar1.Click += BtnRegresar1_Click;
+            // 
             // SedeCentro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(567, 187);
+            ClientSize = new Size(567, 223);
+            Controls.Add(BtnRegresar1);
             Controls.Add(BSede);
             Controls.Add(BCentro);
             Controls.Add(titulo);
@@ -85,5 +98,6 @@
         private Label titulo;
         private Button BCentro;
         private Button BSede;
+        private Button BtnRegresar1;
     }
 }
