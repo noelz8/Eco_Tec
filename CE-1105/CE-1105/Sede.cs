@@ -82,10 +82,7 @@ namespace CE_1105
             ActivoInactivo.Checked = false;
         }
 
-        private void CProvincias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
         public static string GenerateUniqueKey()
         {
             // Implementación de la función

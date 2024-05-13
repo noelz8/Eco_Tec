@@ -20,13 +20,6 @@ public class ValidadorDatos
         return resultado;
     }
 
-    public static string ValidarTexto(string texto)
-    {
-        // Retorna "No válido" si el texto está vacío, "Válido" en caso contrario
-        return string.IsNullOrEmpty(texto) ? "No válido" : texto;
-    }
-
-
     public static string ValidarSeleccion(string seleccion)
     {
         // Retorna "No válido" si la selección es nula o vacía, el valor de la selección en caso contrario
@@ -46,6 +39,8 @@ public class ValidadorDatos
         Regex r = new Regex(@"^[A-Z0-9]+$");
         if (r.IsMatch(sede))
         {
+            //Mensaje de error si la sede no es válida
+            MessageBox.Show("La sede debe tener solo letras mayúsculas y números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return null; // Retorna el string de la sede si es válido
         }
         else
@@ -64,7 +59,8 @@ public class ValidadorDatos
             return contacto; // Retorna el contacto válido
         }
         else
-        {
+        { // Muestra un mensaje de error si el contacto no es válido
+            MessageBox.Show("El contacto debe tener 8 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return "No válido"; // Retorna null si el contacto no es válido
         }
     }
@@ -81,9 +77,5 @@ public class ValidadorDatos
             writer.Write($"{IDE}, {Nombre_Sede}, {Contacto}, {seleccionComboBox}, {estadoCheckBox}\n");
         }
     }
-
 }
-
-
-
 

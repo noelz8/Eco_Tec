@@ -28,7 +28,7 @@ namespace CE_1105
             // Construye la descripción del nodo con los elementos "Código", "Nombre", "Provincia", "Número", y "Estado".
             // Cambia el valor del último elemento a "Activo" o "Desactivado" basado en el valor booleano original.
             string estado = values[4] == " True" ? "Activo" : "Desactivado";
-            node.Text = $"Código: {values[0]}, Nombre: {values[1]}, Número: {values[2]}, Provincia: {values[3]}, Estado: {estado}";
+            node.Text = $"Nombre: {values[1]}, Número: {values[2]}, Provincia: {values[3]}, Estado: {estado}";
 
             return node; // Retorna el nodo creado.
         }
@@ -80,7 +80,7 @@ namespace CE_1105
                                 {
                                     string estado = centroValues[3] == " True" ? "Activo" : "Desactivado";
                                     // Agrega el Centro como subnodo con todos los datos de la línea.
-                                    nodo.Nodes.Add(new TreeNode($"Código: {centroValues[0]}, Nombre: {centroValues[1]}, Número: {centroValues[2]}, Estado: {estado}"));
+                                    nodo.Nodes.Add(new TreeNode($"Código: {centroValues[0]}, Nombre: {centroValues[1]}, Número: {centroValues[2]}, Estado: {estado}, Ubicacion: {centroValues[4]}"));   
                                     // Elimina subnodos vacíos después de agregar los subnodos reales.
                                     break; // Salta de la iteración una vez que se ha encontrado el nodo correcto.
                                 }

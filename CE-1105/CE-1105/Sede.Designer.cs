@@ -55,7 +55,6 @@ namespace CE_1105
             CProvincias.Size = new Size(156, 27);
             CProvincias.TabIndex = 0;
             CProvincias.Text = "Provincias";
-            CProvincias.SelectedIndexChanged += CProvincias_SelectedIndexChanged;
             // 
             // ActivoInactivo
             // 

@@ -22,7 +22,9 @@ namespace CE_1105
             }
         }
         private void BCentro_Click(object sender, EventArgs e){
-
+            Form formulario1 = new Centro(this);    
+            formulario1.Show();
+            this.Hide();
         }
         private void BSede_Click(object sender, EventArgs e){
         Form formulario = new Sede(this);

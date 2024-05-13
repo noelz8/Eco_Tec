@@ -21,8 +21,6 @@ namespace CE_1105
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -80,8 +78,6 @@ namespace CE_1105
             ResumeLayout(false);
             PerformLayout();
         }
-
-        #endregion
 
         private TreeView ListaSedeCentro;
         private Label LblSede;
