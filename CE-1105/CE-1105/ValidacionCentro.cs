@@ -30,8 +30,8 @@ public class ValidacionCentro
 
     public static string ValidarSeleccion(string seleccion)
     {
-        // Expresión regular para permitir letras, números, guiones bajos (_), guiones (-), y espacios, y limitar la longitud a 100 caracteres
-        Regex r = new Regex(@"^[a-zA-Z0-9_-]{1,100}$");
+        // Expresión regular para verificar la presencia de al menos un carácter no espacial
+        Regex r = new Regex(@"\S+");
 
         // Si la selección es nula o vacía, retorna "No válido"
         if (string.IsNullOrEmpty(seleccion))
