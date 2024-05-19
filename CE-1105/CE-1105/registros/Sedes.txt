@@ -1,7 +1,0 @@
-S-UOVMPaOcNX4d, Guanacaste, 12304567, Guanacaste, True
-S-iPSZ27YYh22U, Yuyu, 20637419, Puntarenas, False
-S-XN1PTYca105c, Banana, 78945612, Heredia, False
-S-TKK0Y2cTSVLX, Holi, 78451203, Limón, False
-S-aSYW634P20Ri, HkLJLd, 61612224, Heredia, True
-S-6SPe11eLXeYd, yuuyhy, 87654321, Cartago, False
-S-S93XdPTTi3W4, BObo, 85296310, Guanacaste, True
