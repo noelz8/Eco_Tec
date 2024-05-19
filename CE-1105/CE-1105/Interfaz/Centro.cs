@@ -78,7 +78,7 @@ namespace CE_1105
                 while ((linea = reader.ReadLine()) != null)
                 {
                     // Dividir la línea por algún delimitador, por ejemplo, un espacio
-                    string[] partes = linea.Split(' ');//arreglar
+                    string[] partes = linea.Split(' ');
 
                     // Verificar si la posición 4 es "True"
                     if (partes.Length >= 5 && partes[4] == "True")
