@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using CE_1105.Interfaz;
 
 namespace CE_1105
 {
@@ -80,7 +81,7 @@ namespace CE_1105
                                 {
                                     string estado = centroValues[3] == " True" ? "Activo" : "Desactivado";
                                     // Agrega el Centro como subnodo con todos los datos de la línea.
-                                    nodo.Nodes.Add(new TreeNode($"Código: {centroValues[0]}, Nombre: {centroValues[1]}, Número: {centroValues[2]}, Estado: {estado}, Ubicacion: {centroValues[4]}"));   
+                                    nodo.Nodes.Add(new TreeNode($"Código: {centroValues[0]}, Nombre: {centroValues[1]}, Número: {centroValues[2]}, Estado: {estado}, Ubicacion: {centroValues[4]}"));
                                     // Elimina subnodos vacíos después de agregar los subnodos reales.
                                     break; // Salta de la iteración una vez que se ha encontrado el nodo correcto.
                                 }
@@ -89,6 +90,14 @@ namespace CE_1105
                     }
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Al hacer clic en el botón "Crear", se abre un nuevo formulario de SedeCentro.
+            Transaccion transaccion = new Transaccion();
+            transaccion.Show(); // Muestra el formulario de SedeCentro.
+            this.Hide(); // Oculta el formulario actual.
         }
     }
 }

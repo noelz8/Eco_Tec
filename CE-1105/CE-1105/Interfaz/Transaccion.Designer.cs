@@ -56,7 +56,6 @@
             titulo.TabIndex = 1;
             titulo.Text = "Registro de Materiales";
             titulo.TextAlign = ContentAlignment.MiddleRight;
-            titulo.Click += this.titulo_Click;
             // 
             // LblIngresar
             // 
