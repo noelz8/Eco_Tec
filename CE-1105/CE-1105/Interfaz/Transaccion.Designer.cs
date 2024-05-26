@@ -30,19 +30,19 @@
         {
             titulo = new Label();
             LblIngresar = new Label();
-            textBox1 = new TextBox();
+            identificacion = new TextBox();
             label1 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
+            centros = new ComboBox();
+            listaMateriales = new ComboBox();
             label2 = new Label();
             label3 = new Label();
-            textBox2 = new TextBox();
-            button1 = new Button();
+            cantidad = new TextBox();
+            agregar = new Button();
             listBox1 = new ListBox();
             label4 = new Label();
-            textBox3 = new TextBox();
-            button2 = new Button();
-            button3 = new Button();
+            total = new TextBox();
+            cancelarTransaccion = new Button();
+            finalizar = new Button();
             SuspendLayout();
             // 
             // titulo
@@ -68,12 +68,12 @@
             LblIngresar.TabIndex = 3;
             LblIngresar.Text = "Identificación";
             // 
-            // textBox1
+            // identificacion
             // 
-            textBox1.Location = new Point(348, 160);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(304, 31);
-            textBox1.TabIndex = 4;
+            identificacion.Location = new Point(348, 160);
+            identificacion.Name = "identificacion";
+            identificacion.Size = new Size(304, 31);
+            identificacion.TabIndex = 4;
             // 
             // label1
             // 
@@ -86,21 +86,24 @@
             label1.TabIndex = 5;
             label1.Text = "Centro de Acopio";
             // 
-            // comboBox1
+            // centros
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(1124, 160);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(304, 33);
-            comboBox1.TabIndex = 7;
+            centros.FormattingEnabled = true;
+            centros.Location = new Point(1124, 160);
+            centros.Name = "centros";
+            centros.Size = new Size(304, 33);
+            centros.TabIndex = 7;
+            Load += VerCentros;
+
             // 
-            // comboBox2
+            // listaMateriales
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(60, 343);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(576, 33);
-            comboBox2.TabIndex = 8;
+            listaMateriales.FormattingEnabled = true;
+            listaMateriales.Location = new Point(60, 343);
+            listaMateriales.Name = "listaMateriales";
+            listaMateriales.Size = new Size(576, 33);
+            listaMateriales.TabIndex = 8;
+            listaMateriales.SelectedIndexChanged += listaMateriales_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -124,24 +127,24 @@
             label3.TabIndex = 10;
             label3.Text = "Cantidad";
             // 
-            // textBox2
+            // cantidad
             // 
-            textBox2.Location = new Point(695, 345);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(184, 31);
-            textBox2.TabIndex = 11;
+            cantidad.Location = new Point(695, 345);
+            cantidad.Name = "cantidad";
+            cantidad.Size = new Size(184, 31);
+            cantidad.TabIndex = 11;
             // 
-            // button1
+            // agregar
             // 
-            button1.BackColor = SystemColors.Highlight;
-            button1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.BlanchedAlmond;
-            button1.Location = new Point(1205, 324);
-            button1.Name = "button1";
-            button1.Size = new Size(170, 69);
-            button1.TabIndex = 12;
-            button1.Text = "Agregar";
-            button1.UseVisualStyleBackColor = false;
+            agregar.BackColor = SystemColors.Highlight;
+            agregar.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            agregar.ForeColor = Color.BlanchedAlmond;
+            agregar.Location = new Point(1205, 324);
+            agregar.Name = "agregar";
+            agregar.Size = new Size(170, 69);
+            agregar.TabIndex = 12;
+            agregar.Text = "Agregar";
+            agregar.UseVisualStyleBackColor = false;
             // 
             // listBox1
             // 
@@ -151,6 +154,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(576, 404);
             listBox1.TabIndex = 13;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -163,59 +167,62 @@
             label4.TabIndex = 14;
             label4.Text = "Total de Material \r\nIngresado";
             // 
-            // textBox3
+            // total
             // 
-            textBox3.Location = new Point(695, 746);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(287, 31);
-            textBox3.TabIndex = 15;
+            total.Location = new Point(695, 746);
+            total.Name = "total";
+            total.ReadOnly = true;
+            total.Size = new Size(287, 31);
+            total.TabIndex = 15;
             // 
-            // button2
+            // cancelarTransaccion
             // 
-            button2.BackColor = SystemColors.Highlight;
-            button2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.BlanchedAlmond;
-            button2.Location = new Point(1205, 532);
-            button2.Name = "button2";
-            button2.Size = new Size(170, 69);
-            button2.TabIndex = 16;
-            button2.Text = "Cancelar La Transacción";
-            button2.UseVisualStyleBackColor = false;
+            cancelarTransaccion.BackColor = SystemColors.Highlight;
+            cancelarTransaccion.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelarTransaccion.ForeColor = Color.BlanchedAlmond;
+            cancelarTransaccion.Location = new Point(1205, 532);
+            cancelarTransaccion.Name = "cancelarTransaccion";
+            cancelarTransaccion.Size = new Size(170, 69);
+            cancelarTransaccion.TabIndex = 16;
+            cancelarTransaccion.Text = "Cancelar La Transacción";
+            cancelarTransaccion.UseVisualStyleBackColor = false;
+            cancelarTransaccion.Click += Cancelar_Click;
             // 
-            // button3
+            // finalizar
             // 
-            button3.BackColor = SystemColors.Highlight;
-            button3.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.BlanchedAlmond;
-            button3.Location = new Point(1205, 746);
-            button3.Name = "button3";
-            button3.Size = new Size(170, 69);
-            button3.TabIndex = 17;
-            button3.Text = "Finalizar";
-            button3.UseVisualStyleBackColor = false;
+            finalizar.BackColor = SystemColors.Highlight;
+            finalizar.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            finalizar.ForeColor = Color.BlanchedAlmond;
+            finalizar.Location = new Point(1205, 746);
+            finalizar.Name = "finalizar";
+            finalizar.Size = new Size(170, 69);
+            finalizar.TabIndex = 17;
+            finalizar.Text = "Finalizar";
+            finalizar.UseVisualStyleBackColor = false;
             // 
             // Transaccion
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1590, 1021);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(textBox3);
+            Controls.Add(finalizar);
+            Controls.Add(cancelarTransaccion);
+            Controls.Add(total);
             Controls.Add(label4);
             Controls.Add(listBox1);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
+            Controls.Add(agregar);
+            Controls.Add(cantidad);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(listaMateriales);
+            Controls.Add(centros);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(identificacion);
             Controls.Add(LblIngresar);
             Controls.Add(titulo);
             Name = "Transaccion";
             Text = "Transacción (Estudiante)";
+            Load += Transaccion_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -224,18 +231,18 @@
 
         private Label titulo;
         private Label LblIngresar;
-        private TextBox textBox1;
+        private TextBox identificacion;
         private Label label1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
+        private ComboBox centros;
+        private ComboBox listaMateriales;
         private Label label2;
         private Label label3;
-        private TextBox textBox2;
-        private Button button1;
+        private TextBox cantidad;
+        private Button agregar;
         private ListBox listBox1;
         private Label label4;
-        private TextBox textBox3;
-        private Button button2;
-        private Button button3;
+        private TextBox total;
+        private Button cancelarTransaccion;
+        private Button finalizar;
     }
 }
