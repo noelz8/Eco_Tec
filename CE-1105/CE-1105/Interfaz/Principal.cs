@@ -94,9 +94,9 @@ namespace CE_1105
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Al hacer clic en el botón "Crear", se abre un nuevo formulario de SedeCentro.
+            // Al hacer clic en el botón "Crear", se abre un nuevo formulario de transaccion.
             Transaccion transaccion = new Transaccion();
-            transaccion.Show(); // Muestra el formulario de SedeCentro.
+            transaccion.Show(); // Muestra el formulario de transaccion.
             this.Hide(); // Oculta el formulario actual.
         }
     }

@@ -88,20 +88,22 @@
             // 
             // centros
             // 
+            centros.DropDownStyle = ComboBoxStyle.DropDownList;
             centros.FormattingEnabled = true;
             centros.Location = new Point(1124, 160);
             centros.Name = "centros";
             centros.Size = new Size(304, 33);
             centros.TabIndex = 7;
             Load += VerCentros;
-
             // 
             // listaMateriales
             // 
+            listaMateriales.DropDownStyle = ComboBoxStyle.DropDownList;
             listaMateriales.FormattingEnabled = true;
             listaMateriales.Location = new Point(60, 343);
             listaMateriales.Name = "listaMateriales";
             listaMateriales.Size = new Size(576, 33);
+            listaMateriales.Sorted = true;
             listaMateriales.TabIndex = 8;
             listaMateriales.SelectedIndexChanged += listaMateriales_SelectedIndexChanged;
             // 
@@ -145,6 +147,7 @@
             agregar.TabIndex = 12;
             agregar.Text = "Agregar";
             agregar.UseVisualStyleBackColor = false;
+            agregar.Click += agregar_Click;
             // 
             // listBox1
             // 

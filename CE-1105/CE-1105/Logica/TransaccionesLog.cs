@@ -8,6 +8,8 @@ namespace CE_1105.Logica
 {
     public class TransaccionesLog
     {
+        private static double totalAcumulado = 0.0;
+
         public static void CargarMateriales(ComboBox comboBox)
         {
             // Ruta del archivo de texto
@@ -38,6 +40,11 @@ namespace CE_1105.Logica
                 MessageBox.Show("El archivo no se encuentra en la ruta especificada.");
             }
         }
+        public static void ResetTotalAcumulado()
+        {
+            totalAcumulado = 0.0;
+        }
+
         public static void CargarCentros(ComboBox comboBox)
         {
             // Ruta del archivo de texto
@@ -68,6 +75,38 @@ namespace CE_1105.Logica
                 MessageBox.Show("El archivo no se encuentra en la ruta especificada.");
             }
 
+        }
+
+        public static void AgregarMaterial(ComboBox listaMateriales, TextBox cantidad, ListBox listBox1, TextBox total)
+        {
+            if (listaMateriales.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!double.TryParse(cantidad.Text, out double cantidadIngresada))
+            {
+                MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string materialSeleccionado = listaMateriales.SelectedItem.ToString();
+            string[] parts = materialSeleccionado.Split(',');
+
+            if (parts.Length < 5 || !double.TryParse(parts[3], out double precioUnidad))
+            {
+                MessageBox.Show("Error al obtener el precio del material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            double subtotal = cantidadIngresada * precioUnidad;
+            totalAcumulado += subtotal;
+
+            string itemParaAgregar = $"{materialSeleccionado}, Cantidad: {cantidadIngresada}, Subtotal: {subtotal}";
+            listBox1.Items.Add(itemParaAgregar);
+
+            total.Text = totalAcumulado.ToString("F2");
         }
     }
 }

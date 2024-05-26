@@ -32,9 +32,16 @@ namespace CE_1105.Interfaz
 
         private void Cancelar_Click(object sender, EventArgs e)
         {
+            TransaccionesLog.ResetTotalAcumulado();
             Principal principal = new Principal();
             principal.Show();
-            this.Hide();
+            this.Close();
+
+        }
+
+        private void agregar_Click(object sender, EventArgs e)
+        {
+            TransaccionesLog.AgregarMaterial(listaMateriales, cantidad, listBox1, total);
         }
 
 
