@@ -94,7 +94,6 @@
             centros.Name = "centros";
             centros.Size = new Size(304, 33);
             centros.TabIndex = 7;
-            Load += VerCentros;
             // 
             // listaMateriales
             // 
@@ -155,7 +154,7 @@
             listBox1.ItemHeight = 25;
             listBox1.Location = new Point(60, 532);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(576, 404);
+            listBox1.Size = new Size(759, 404);
             listBox1.TabIndex = 13;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
@@ -163,7 +162,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(695, 605);
+            label4.Location = new Point(826, 640);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(310, 86);
@@ -172,7 +171,7 @@
             // 
             // total
             // 
-            total.Location = new Point(695, 746);
+            total.Location = new Point(839, 746);
             total.Name = "total";
             total.ReadOnly = true;
             total.Size = new Size(287, 31);
@@ -202,6 +201,7 @@
             finalizar.TabIndex = 17;
             finalizar.Text = "Finalizar";
             finalizar.UseVisualStyleBackColor = false;
+            finalizar.Click += finalizar_Click;
             // 
             // Transaccion
             // 
@@ -225,7 +225,7 @@
             Controls.Add(titulo);
             Name = "Transaccion";
             Text = "Transacción (Estudiante)";
-            Load += Transaccion_Load;
+            Load += Cargar;
             ResumeLayout(false);
             PerformLayout();
         }
