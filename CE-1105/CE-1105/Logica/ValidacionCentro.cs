@@ -30,8 +30,8 @@ public class ValidacionCentro
 
     public static string ValidarSeleccion(string seleccion)
     {
-        // Expresión regular para verificar la presencia de al menos un carácter no espacial
-        Regex r = new Regex(@"\S+");
+        // Expresión regular para verificar que la cadena tenga entre 1 y 100 caracteres
+        Regex r = new Regex("^.{{1,100}}$");
 
         // Si la selección es nula o vacía, retorna "No válido"
         if (string.IsNullOrEmpty(seleccion))
@@ -51,10 +51,10 @@ public class ValidacionCentro
     }
 
     public static string ValidarEstado(bool estado)
-    {
-        // Retorna "Activo" si el estado es verdadero, "Inactivo" en caso contrario
-        return estado ? "Activo" : "Inactivo";
-    }
+        {
+            // Retorna "Activo" si el estado es verdadero, "Inactivo" en caso contrario
+            return estado ? "Activo" : "Inactivo";
+        }
 
     public static string SedeCorrecta(string sede)
     {
@@ -86,15 +86,35 @@ public class ValidacionCentro
         // Construir la ruta completa del archivo
         string rutaArchivo = Path.Combine(rutaCarpetaAplicacion, "Centros.txt"); // Asegúrate de que el nombre del archivo sea único o maneja la sobrescritura según sea necesario
 
-        using (StreamWriter writer = new StreamWriter(rutaArchivo, true)) // 'true' para agregar al final del archivo
+        // Verificar si el archivo ya existe
+        if (File.Exists(rutaArchivo))
         {
-            writer.Write($"{IDE}, {Nombre_Sede}, {Contacto}, {estadoCheckBox}, {seleccionComboBox}\n");
+            // Si el archivo existe, abrirlo en modo append para agregar datos al final
+            using (StreamWriter writer = new StreamWriter(rutaArchivo, true)) // 'true' para agregar al final del archivo
+            {
+                writer.WriteLine($"{IDE}, {Nombre_Sede}, {Contacto}, {estadoCheckBox}, {seleccionComboBox}");
+            }
+        }
+        else
+        {
+            // Si el archivo no existe, crear uno nuevo y escribir los datos
+            using (StreamWriter writer = new StreamWriter(rutaArchivo, false)) // 'false' para sobrescribir el archivo si no existe
+            {
+                writer.WriteLine($"{IDE}, {Nombre_Sede}, {Contacto}, {estadoCheckBox}, {seleccionComboBox}");
+            }
         }
     }
+
     public string VerificaIde(string IDE)
     {
         // Ruta del archivo donde se almacenan los códigos
         string rutaArchivo = Path.Combine(Application.StartupPath, "Centros.txt");
+
+        // Verifica si el archivo existe, si no, crea uno vacío
+        if (!File.Exists(rutaArchivo))
+        {
+            File.Create(rutaArchivo).Close(); // Crea el archivo si no existe
+        }
 
         // Lee el archivo y almacena los códigos en un HashSet para evitar duplicados
         HashSet<string> codigosExistentes = new HashSet<string>();
@@ -121,6 +141,5 @@ public class ValidacionCentro
             return IDE;
         }
     }
-
 }
 
