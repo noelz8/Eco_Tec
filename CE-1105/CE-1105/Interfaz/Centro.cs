@@ -77,21 +77,29 @@ namespace CE_1105
                 string linea;
                 while ((linea = reader.ReadLine()) != null)
                 {
-                    // Dividir la línea por algún delimitador, por ejemplo, un espacio
+                    // Dividir la línea por comas
                     string[] partes = linea.Split(' ');
 
                     // Verificar si la posición 4 es "True"
                     if (partes.Length >= 5 && partes[4] == "True")
                     {
-                        // Crear una nueva cadena sin el último carácter
-                        string contenidoSinUltimoCaracter = partes[1].Substring(0, partes[1].Length - 1);
+                        // Obtener el valor de la posición 1
+                        string valorPosicion1 = partes[1];
 
-                        // Agregar el contenido modificado al ComboBox
-                        comboBox1.Items.Add(contenidoSinUltimoCaracter);
+                        // Eliminar la coma final si está presente
+                        if (valorPosicion1.EndsWith(","))
+                        {
+                            valorPosicion1 = valorPosicion1.Substring(0, valorPosicion1.Length - 1);
+                        }
+
+                        // Agregar el valor limpio de la posición 1 al ComboBox
+                        comboBox1.Items.Add(valorPosicion1.Trim());
                     }
                 }
             }
         }
 
+
     }
 }
+

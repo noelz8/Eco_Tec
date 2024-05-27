@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System;
 using System.Text.RegularExpressions;
+using CE_1105.Logica;
 
 public class ValidadorDeSedes
 {
@@ -35,47 +36,42 @@ public class ValidadorDeSedes
 
     public static string SedeCorrecta(string sede)
     {
+        // Reemplaza todos los espacios en blanco por guiones
+        sede = sede.Replace(" ", "-");
+
         // Utiliza una expresión regular para verificar si el string cumple con los criterios
-        Regex r = new Regex(@"^[A-Z0-9]+$");
-        if (r.IsMatch(sede))
+        Regex r = new Regex(@"^[A-Za-z0-9-]+$");// Modificado para permitir guiones
+        if (!r.IsMatch(sede))
         {
-            //Mensaje de error si la sede no es válida
-            MessageBox.Show("La sede debe tener solo letras mayúsculas y números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return null; // Retorna el string de la sede si es válido
+            // Mensaje de error si la sede no es válida
+            MessageBox.Show("La sede debe tener solo letras mayúsculas, números y guiones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null; // Retorna null si el string no es válido
         }
         else
         {
-            return sede; // Retorna null si el string no es válido
+            return sede; // Retorna el string de la sede si es válido
         }
     }
+
     public static string ContactoV(string contacto)
-    {
-        // Utiliza una expresión regular para verificar si el número es válido y consta de exactamente 8 dígitos
-        Regex r = new Regex(@"^\d{8}$");
-        Match match = r.Match(contacto);
-        if (match.Success)
         {
-            // Retorna el contacto si es válido
-            return contacto; // Retorna el contacto válido
+            // Utiliza una expresión regular para verificar si el número es válido y consta de exactamente 8 dígitos
+            Regex r = new Regex(@"^\d{8}$");
+            Match match = r.Match(contacto);
+            if (match.Success)
+            {
+                // Retorna el contacto si es válido
+                return contacto; // Retorna el contacto válido
+            }
+            else
+            { // Muestra un mensaje de error si el contacto no es válido
+                MessageBox.Show("El contacto debe tener 8 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "No válido"; // Retorna null si el contacto no es válido
+            }
         }
-        else
-        { // Muestra un mensaje de error si el contacto no es válido
-            MessageBox.Show("El contacto debe tener 8 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return "No válido"; // Retorna null si el contacto no es válido
-        }
-    }
-    public void EscribirDatosEnArchivo(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
+    public static void EscribirDatosEnArchivo(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
     {
-        // Obtener la ruta de la carpeta de la aplicación
-        string rutaCarpetaAplicacion = Application.StartupPath;
-
-        // Construir la ruta completa del archivo
-        string rutaArchivo = Path.Combine(rutaCarpetaAplicacion, "Sedes.txt"); // Asegúrate de que el nombre del archivo sea único o maneja la sobrescritura según sea necesario
-
-        using (StreamWriter writer = new StreamWriter(rutaArchivo, true)) // 'true' para agregar al final del archivo
-        {
-            writer.Write($"{IDE}, {Nombre_Sede}, {Contacto}, {seleccionComboBox}, {estadoCheckBox}\n");
-        }
+        LeerEscribir.EscribirDatosEnArchivoSede(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
     }
 }
 
