@@ -80,29 +80,7 @@ public class ValidacionCentro
 
     public void EscribirDatosEnArchivo(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
     {
-        // Obtener la ruta de la carpeta de la aplicación
-        string rutaCarpetaAplicacion = Application.StartupPath;
-
-        // Construir la ruta completa del archivo
-        string rutaArchivo = Path.Combine(rutaCarpetaAplicacion, "Centros.txt"); // Asegúrate de que el nombre del archivo sea único o maneja la sobrescritura según sea necesario
-
-        // Verificar si el archivo ya existe
-        if (File.Exists(rutaArchivo))
-        {
-            // Si el archivo existe, abrirlo en modo append para agregar datos al final
-            using (StreamWriter writer = new StreamWriter(rutaArchivo, true)) // 'true' para agregar al final del archivo
-            {
-                writer.WriteLine($"{IDE}, {Nombre_Sede}, {Contacto}, {estadoCheckBox}, {seleccionComboBox}");
-            }
-        }
-        else
-        {
-            // Si el archivo no existe, crear uno nuevo y escribir los datos
-            using (StreamWriter writer = new StreamWriter(rutaArchivo, false)) // 'false' para sobrescribir el archivo si no existe
-            {
-                writer.WriteLine($"{IDE}, {Nombre_Sede}, {Contacto}, {estadoCheckBox}, {seleccionComboBox}");
-            }
-        }
+        LeerEscribir.EscribirDatosEnArchivoCentro(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
     }
 
     public string VerificaIde(string IDE)
