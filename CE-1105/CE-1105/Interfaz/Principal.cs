@@ -79,14 +79,14 @@ namespace CE_1105
                             {
                                 if (nodo.Text.Contains(centroValues[1])) // Comprueba si el nodo contiene el nombre de la sede.
                                 {
-                                    string estado = centroValues[3] == "True" ? "Activo" : "Desactivado";
-                                    // Concatena todos los valores desde la posición 5 hasta el final usando string.Join().
-                                    string restoDatos = string.Join(", ", centroValues.Skip(4).ToArray());
+                                    // Verifica si el valor en centroValues[3] es "True" o "False" de manera insensible a mayúsculas y minúsculas.
+                                    bool isActivo = string.Equals(centroValues[3], " True", StringComparison.OrdinalIgnoreCase);
+                                    string estado = isActivo ? "Activo" : "Desactivado";
 
                                     // Agrega el Centro como subnodo con todos los datos de la línea.
-                                    nodo.Nodes.Add(new TreeNode($"Código: {centroValues[0]}, Nombre: {centroValues[1]}, Número: {centroValues[2]}, Estado: {estado}, Ubicacion: {centroValues[4]}, {restoDatos}"));
+                                    string ubicacion = string.Join(", ", centroValues.Skip(4)); // Une todos los elementos desde la posición 4 hasta el final.
+                                    nodo.Nodes.Add(new TreeNode($"Código: {centroValues[0]}, Nombre: {centroValues[1]}, Número: {centroValues[2]}, Estado: {estado}, Ubicacion: {ubicacion}"));
 
-                                    // Elimina subnodos vacíos después de agregar los subnodos reales.
                                     break; // Salta de la iteración una vez que se ha encontrado el nodo correcto.
                                 }
                             }
