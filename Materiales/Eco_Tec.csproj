@@ -49,26 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="crear material.cs" />
-    <Compile Include="Interfaz material.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Interfaz material.Designer.cs">
+    <Compile Include="Logica\crear material.cs" />
+    <Compile Include="Interfaz\Interfaz material.cs" />
+    <Compile Include="Interfaz\Interfaz material.Designer.cs">
       <DependentUpon>Interfaz material.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaMateriales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListaMateriales.Designer.cs">
+    <Compile Include="Interfaz\ListaMateriales.cs" />
+    <Compile Include="Interfaz\ListaMateriales.Designer.cs">
       <DependentUpon>ListaMateriales.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManejoMaterial.cs" />
+    <Compile Include="Logica\ManejoMaterial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Interfaz material.resx">
+    <EmbeddedResource Include="Interfaz\Interfaz material.resx">
       <DependentUpon>Interfaz material.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaMateriales.resx">
+    <EmbeddedResource Include="Interfaz\ListaMateriales.resx">
       <DependentUpon>ListaMateriales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -94,5 +90,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
