@@ -30,25 +30,29 @@ public class ValidacionCentro
 
     public static string ValidarSeleccion(string seleccion)
     {
-        // Expresión regular para verificar que la cadena tenga entre 1 y 100 caracteres
-        Regex r = new Regex("^.{{1,100}}$");
+        // Simplificamos la expresión regular para permitir cualquier carácter y limitar la longitud a 100
+        Regex r = new Regex("^.{0,100}$");
 
-        // Si la selección es nula o vacía, retorna "No válido"
+        // Verificamos si la selección es nula o vacía
         if (string.IsNullOrEmpty(seleccion))
         {
+            MessageBox.Show("Ubicación vacía", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return "No válido";
         }
-        // Si la selección no cumple con la expresión regular, retorna "No válido"
-        else if (!r.IsMatch(seleccion))
+        // Verificamos si la selección excede el límite de 100 caracteres
+        else if (seleccion.Length > 100)
         {
+            MessageBox.Show("Excedió el límite de 100 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return "No válido";
         }
-        // Si la selección cumple con todos los criterios, retorna el valor de la selección
+        // Si la selección pasa todas las verificaciones, retornamos el valor de la selección
         else
         {
             return seleccion;
         }
     }
+
+
 
     public static string ValidarEstado(bool estado)
         {
