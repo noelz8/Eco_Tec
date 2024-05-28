@@ -55,7 +55,7 @@
             this.dataGridViewMateriales.Name = "dataGridViewMateriales";
             this.dataGridViewMateriales.RowHeadersWidth = 51;
             this.dataGridViewMateriales.RowTemplate.Height = 24;
-            this.dataGridViewMateriales.Size = new System.Drawing.Size(800, 450);
+            this.dataGridViewMateriales.Size = new System.Drawing.Size(993, 450);
             this.dataGridViewMateriales.TabIndex = 0;
             // 
             // ID
@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(993, 450);
             this.Controls.Add(this.dataGridViewMateriales);
             this.Name = "ListaMateriales";
             this.Text = "ListaMateriales";
