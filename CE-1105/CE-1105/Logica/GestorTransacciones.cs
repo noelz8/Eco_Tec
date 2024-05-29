@@ -49,7 +49,6 @@ namespace CE_1105.Logica
                     transacciones.Add(new ManejoTransaccion
                     {
                         IdTransaccionCentro = partes[0],
-                        IdTransaccionEstudiante = partes[1],
                         CentroAcopio = partes[2],
                         Estado = partes[3],
                         FechaHora = fecha,

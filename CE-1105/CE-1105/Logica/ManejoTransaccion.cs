@@ -10,7 +10,6 @@ namespace CE_1105.Logica
     public class ManejoTransaccion
     {
         public string IdTransaccionCentro { get; set; }
-        public string IdTransaccionEstudiante { get; set; }
         public string CentroAcopio { get; set; }
         public string Estado { get; set; }
         public DateTime FechaHora { get; set; }
