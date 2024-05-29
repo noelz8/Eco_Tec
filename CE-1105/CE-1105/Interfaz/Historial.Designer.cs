@@ -93,6 +93,9 @@
             dataGridViewTransacciones.RowHeadersWidth = 51;
             dataGridViewTransacciones.Size = new Size(1195, 398);
             dataGridViewTransacciones.TabIndex = 4;
+            dataGridViewTransacciones.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewTransacciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewTransacciones.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dataGridViewTransacciones.CellContentClick += dataGridViewTransacciones_CellContentClick;
             // 
             // button1
