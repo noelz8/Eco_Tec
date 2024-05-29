@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CE_1105.Logica
 {
+    // Clase que gestiona las operaciones relacionadas con las transacciones
     public class GestorTransacciones
     {
         private string rutaArchivoTransacciones;
@@ -19,6 +20,7 @@ namespace CE_1105.Logica
             this.rutaArchivoCentros = rutaArchivoCentros;
         }
 
+        // Método para obtener la lista de centros de acopio desde un archivo
         public List<string> ObtenerCentros()
         {
             var centros = new List<string>();
@@ -31,39 +33,51 @@ namespace CE_1105.Logica
             return centros;
         }
 
+        // Método para obtener las transacciones filtradas por centro de acopio y rango de fechas
         public List<ManejoTransaccion> ObtenerTransacciones(string centroAcopio, DateTime fechaInicio, DateTime fechaFin)
         {
             var transacciones = new List<ManejoTransaccion>();
-            var lineas = File.ReadAllLines("TransaccionCentro.txt");
+            var lineas = File.ReadAllLines(rutaArchivoTransacciones);
 
             foreach (var linea in lineas)
             {
                 var partes = linea.Split(',');
 
-                if (partes.Length < 10) continue;
+                if (partes.Length < 8) continue;
 
                 var fecha = DateTime.ParseExact(partes[4], "dd/M/yyyy H:mm:ss", CultureInfo.InvariantCulture);
 
+                // Filtrar por centro de acopio y rango de fechas
                 if (partes[2] == centroAcopio && fecha >= fechaInicio && fecha <= fechaFin)
                 {
-                    transacciones.Add(new ManejoTransaccion
+                    var transaccion = new ManejoTransaccion
                     {
                         IdTransaccionCentro = partes[0],
-                        IdTransaccionEstudiante = partes[1],
                         CentroAcopio = partes[2],
                         Estado = partes[3],
-                        FechaHora = fecha,
-                        Material = partes[5].Trim(),
-                        Cantidad = int.Parse(partes[6].Trim()),
-                        TecColones = int.Parse(partes[7]),
+                        FechaHora = fecha
+                    };
 
-                    });
+                    // Agregar materiales a la transacción
+                    for (int i = 5; i < partes.Length; i += 3)
+                    {
+                        if (i + 2 < partes.Length)
+                        {
+                            transaccion.Materiales.Add(new GridMateriales
+                            {
+                                Nombre = partes[i].Trim(),
+                                Cantidad = int.Parse(partes[i + 1].Trim()),
+                                TecColones = int.Parse(partes[i + 2].Trim())
+                            });
+                        }
+                    }
+
+                    transacciones.Add(transaccion);
                 }
             }
 
+            // Ordenar las transacciones por fecha de manera descendente
             return transacciones.OrderByDescending(t => t.FechaHora).ToList();
         }
-
-
-}
+    }
 }

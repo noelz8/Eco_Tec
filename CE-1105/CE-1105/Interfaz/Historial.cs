@@ -17,20 +17,24 @@ namespace CE_1105.Interfaz
         public Historial()
         {
             InitializeComponent();
-            gestor = new GestorTransacciones("TransaccionCentro", "Centro.txt");
+            gestor = new GestorTransacciones("TransaccionCentro.txt", "Centro.txt");
             CargarCentros();
         }
+
+        // Cargar los centros de acopio en el ComboBox al iniciar el formulario
         private void CargarCentros()
         {
             comboBoxCentro.DataSource = gestor.ObtenerCentros();
         }
 
+        // Maneja el evento de clic del botón "Buscar"
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             string centroSeleccionado = comboBoxCentro.SelectedItem.ToString();
             DateTime fechaInicio = dateTimePickerInicio.Value;
             DateTime fechaFin = dateTimePickerFin.Value;
 
+            // Obtener las transacciones filtradas por centro de acopio y rango de fechas
             var transacciones = gestor.ObtenerTransacciones(centroSeleccionado, fechaInicio, fechaFin);
 
             if (transacciones.Count == 0)
@@ -41,15 +45,46 @@ namespace CE_1105.Interfaz
             else
             {
                 labelMensaje.Text = string.Empty;
-                dataGridViewTransacciones.DataSource = transacciones;
+
+                var detalles = new List<TransaccionDetalle>();
+
+                // Construir los detalles de las transacciones para mostrar en el DataGrid
+                foreach (var transaccion in transacciones)
+                {
+                    var materialesBuilder = new StringBuilder();
+                    foreach (var material in transaccion.Materiales)
+                    {
+                        // Concatenar los detalles de los materiales en una sola cadena
+                        materialesBuilder.AppendLine($"{material.Nombre}: {material.Cantidad} unidades, {material.TecColones} TecColones");
+                    }
+
+                    // Agregar los detalles de la transacción a la lista
+                    detalles.Add(new TransaccionDetalle
+                    {
+                        IdTransaccionCentro = transaccion.IdTransaccionCentro,
+                        CentroAcopio = transaccion.CentroAcopio,
+                        Estado = transaccion.Estado,
+                        FechaHora = transaccion.FechaHora,
+                        Materiales = materialesBuilder.ToString().Trim()
+                    });
+                }
+
+                // Asignar los detalles de las transacciones como fuente de datos del DataGrid
+                dataGridViewTransacciones.DataSource = detalles;
             }
         }
 
+        // Maneja el evento de clic del botón "Volver"
         private void button1_Click(object sender, EventArgs e)
         {
             VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
             vistaDesarrollador.Show();
             this.Close();
+        }
+
+        private void dataGridViewTransacciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+     
         }
     }
 }

@@ -124,9 +124,9 @@ namespace CE_1105.Logica
         public static bool ValidarTransaccion(TextBox identificacion, ComboBox centros, ListBox listBox1)
         {
             // Esta verificación es Temporal para el carnet
-            if (identificacion.Text.Length != 10 || !int.TryParse(identificacion.Text, out _))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(identificacion.Text, @"^\d{10}$"))
             {
-                MessageBox.Show("Por favor, ingrese una identificación válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, ingrese una identificación válida (10 dígitos).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             // Verificación de centro de Acopio seleccionado

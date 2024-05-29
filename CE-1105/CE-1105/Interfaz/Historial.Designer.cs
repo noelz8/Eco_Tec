@@ -41,30 +41,34 @@
             // comboBoxCentro
             // 
             comboBoxCentro.FormattingEnabled = true;
-            comboBoxCentro.Location = new Point(628, 10);
+            comboBoxCentro.Location = new Point(785, 12);
+            comboBoxCentro.Margin = new Padding(4, 4, 4, 4);
             comboBoxCentro.Name = "comboBoxCentro";
-            comboBoxCentro.Size = new Size(194, 28);
+            comboBoxCentro.Size = new Size(242, 33);
             comboBoxCentro.TabIndex = 0;
             // 
             // dateTimePickerInicio
             // 
-            dateTimePickerInicio.Location = new Point(12, 12);
+            dateTimePickerInicio.Location = new Point(15, 15);
+            dateTimePickerInicio.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerInicio.Name = "dateTimePickerInicio";
-            dateTimePickerInicio.Size = new Size(280, 27);
+            dateTimePickerInicio.Size = new Size(349, 31);
             dateTimePickerInicio.TabIndex = 1;
             // 
             // dateTimePickerFin
             // 
-            dateTimePickerFin.Location = new Point(322, 12);
+            dateTimePickerFin.Location = new Point(402, 15);
+            dateTimePickerFin.Margin = new Padding(4, 4, 4, 4);
             dateTimePickerFin.Name = "dateTimePickerFin";
-            dateTimePickerFin.Size = new Size(290, 27);
+            dateTimePickerFin.Size = new Size(362, 31);
             dateTimePickerFin.TabIndex = 2;
             // 
             // buttonBuscar
             // 
-            buttonBuscar.Location = new Point(852, 8);
+            buttonBuscar.Location = new Point(1065, 10);
+            buttonBuscar.Margin = new Padding(4, 4, 4, 4);
             buttonBuscar.Name = "buttonBuscar";
-            buttonBuscar.Size = new Size(116, 31);
+            buttonBuscar.Size = new Size(145, 39);
             buttonBuscar.TabIndex = 3;
             buttonBuscar.Text = "Buscar";
             buttonBuscar.UseVisualStyleBackColor = true;
@@ -73,26 +77,33 @@
             // labelMensaje
             // 
             labelMensaje.AutoSize = true;
-            labelMensaje.Location = new Point(22, 397);
+            labelMensaje.Location = new Point(28, 496);
+            labelMensaje.Margin = new Padding(4, 0, 4, 0);
             labelMensaje.Name = "labelMensaje";
-            labelMensaje.Size = new Size(50, 20);
+            labelMensaje.Size = new Size(59, 25);
             labelMensaje.TabIndex = 5;
             labelMensaje.Text = "label1";
             // 
             // dataGridViewTransacciones
             // 
             dataGridViewTransacciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTransacciones.Location = new Point(12, 61);
+            dataGridViewTransacciones.Location = new Point(15, 76);
+            dataGridViewTransacciones.Margin = new Padding(4, 4, 4, 4);
             dataGridViewTransacciones.Name = "dataGridViewTransacciones";
             dataGridViewTransacciones.RowHeadersWidth = 51;
-            dataGridViewTransacciones.Size = new Size(956, 318);
+            dataGridViewTransacciones.Size = new Size(1195, 398);
             dataGridViewTransacciones.TabIndex = 4;
+            dataGridViewTransacciones.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewTransacciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewTransacciones.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridViewTransacciones.CellContentClick += dataGridViewTransacciones_CellContentClick;
             // 
             // button1
             // 
-            button1.Location = new Point(724, 397);
+            button1.Location = new Point(905, 496);
+            button1.Margin = new Padding(4, 4, 4, 4);
             button1.Name = "button1";
-            button1.Size = new Size(214, 35);
+            button1.Size = new Size(268, 44);
             button1.TabIndex = 6;
             button1.Text = "Volver";
             button1.UseVisualStyleBackColor = true;
@@ -100,9 +111,9 @@
             // 
             // Historial
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(980, 450);
+            ClientSize = new Size(1225, 562);
             Controls.Add(button1);
             Controls.Add(labelMensaje);
             Controls.Add(dataGridViewTransacciones);
@@ -110,6 +121,7 @@
             Controls.Add(dateTimePickerFin);
             Controls.Add(dateTimePickerInicio);
             Controls.Add(comboBoxCentro);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Historial";
             Text = "Historial";
             ((System.ComponentModel.ISupportInitialize)dataGridViewTransacciones).EndInit();
