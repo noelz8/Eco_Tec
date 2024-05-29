@@ -153,6 +153,9 @@ namespace CE_1105.Logica
             string centroFilePath = "TransaccionCentro.txt";
             string estudianteFilePath = "TransaccionEstudiante.txt";
 
+            DateTime fecha = DateTime.Now;
+
+
             // Generar un ID único de 12 caracteres alfanuméricos y verificar que no exista en el archivo
             string idUnico;
             do
@@ -164,7 +167,7 @@ namespace CE_1105.Logica
 
             // Construir la línea de texto para el archivo de transacción de centro
             StringBuilder centroLine = new StringBuilder();
-            centroLine.Append($"R-{idUnico},T-{idUnico},{idCentro}");
+            centroLine.Append($"R-{idUnico},T-{idUnico},{idCentro},Ingreso,{fecha}");
 
             // Repetir sobre los elementos del ListBox para agregar los detalles de los materiales
             foreach (var item in listBox1.Items)
@@ -233,47 +236,91 @@ namespace CE_1105.Logica
             return false;
         }
 
+        // Función para agregar TEC colones al archivo "Billeteras"
+        public static void AgregarTecColones(TextBox identificacion, TextBox total)
+        {
+            string filePath = "Billeteras.txt";
+            string id = identificacion.Text;
+            double montoTotal = double.Parse(total.Text);
+
+            // Verificar si el archivo existe, sino lo crea
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath).Close();
+            }
+
+            // Leer todas las líneas del archivo
+            var lines = File.ReadAllLines(filePath).ToList();
+
+            bool idEncontrado = false;
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string[] parts = lines[i].Split(',');
+
+                if (parts[0].Trim() == id)
+                {
+                    double montoExistente = double.Parse(parts[1].Trim());
+                    double nuevoMonto = montoExistente + montoTotal;
+
+                    lines[i] = $"{id}, {nuevoMonto}";
+                    idEncontrado = true;
+                    break;
+                }
+            }
+
+            // Si la identificación no se encuentra en el archivo, agregarla
+            if (!idEncontrado)
+            {
+                lines.Add($"{id}, {montoTotal}");
+            }
+
+            // Escribir las líneas actualizadas de vuelta al archivo
+            File.WriteAllLines(filePath, lines);
+        }
+    
+
         // Método para agregar un material al ListBox y actualizar el total acumulado
         public static void AgregarMaterial(ComboBox listaMateriales, TextBox cantidad, ListBox listBox1, TextBox total)
-        {
-            // Verifica si se ha seleccionado un material en el ComboBox
-            if (listaMateriales.SelectedIndex == -1)
             {
-                MessageBox.Show("Por favor, seleccione un material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                // Verifica si se ha seleccionado un material en el ComboBox
+                if (listaMateriales.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Por favor, seleccione un material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Intenta convertir el texto del TextBox de cantidad a un número
+                if (!double.TryParse(cantidad.Text, out double cantidadIngresada))
+                {
+                    MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Obtiene el material seleccionado del ComboBox y lo divide en partes+
+                string materialSeleccionado = listaMateriales.SelectedItem.ToString();
+                string[] parts = materialSeleccionado.Split(',');
+
+                // Verifica si el arreglo tiene al menos 5 partes y si la cuarta parte (precio) puede ser convertida a un número
+                if (parts.Length < 5 || !double.TryParse(parts[3], out double precioUnidad))
+                {
+                    MessageBox.Show("Error al obtener el precio del material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Calcula el subtotal multiplicando la cantidad ingresada por el precio por unidad
+                double subtotal = cantidadIngresada * precioUnidad;
+                // Agrega el subtotal al total acumulado
+                totalAcumulado += subtotal;
+
+                // Construye una cadena con los detalles del material, la cantidad y el subtotal
+                string itemParaAgregar = $"{materialSeleccionado}, Cantidad: {cantidadIngresada}, Subtotal: {subtotal}";
+                // Agrega la cadena al ListBox
+                listBox1.Items.Add(itemParaAgregar);
+
+                // Actualiza el TextBox total con el nuevo total acumulado, formateado a dos decimales
+                total.Text = totalAcumulado.ToString("F2");
             }
-
-            // Intenta convertir el texto del TextBox de cantidad a un número
-            if (!double.TryParse(cantidad.Text, out double cantidadIngresada))
-            {
-                MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Obtiene el material seleccionado del ComboBox y lo divide en partes+
-            string materialSeleccionado = listaMateriales.SelectedItem.ToString();
-            string[] parts = materialSeleccionado.Split(',');
-
-            // Verifica si el arreglo tiene al menos 5 partes y si la cuarta parte (precio) puede ser convertida a un número
-            if (parts.Length < 5 || !double.TryParse(parts[3], out double precioUnidad))
-            {
-                MessageBox.Show("Error al obtener el precio del material.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Calcula el subtotal multiplicando la cantidad ingresada por el precio por unidad
-            double subtotal = cantidadIngresada * precioUnidad;
-            // Agrega el subtotal al total acumulado
-            totalAcumulado += subtotal;
-
-            // Construye una cadena con los detalles del material, la cantidad y el subtotal
-            string itemParaAgregar = $"{materialSeleccionado}, Cantidad: {cantidadIngresada}, Subtotal: {subtotal}";
-            // Agrega la cadena al ListBox
-            listBox1.Items.Add(itemParaAgregar);
-
-            // Actualiza el TextBox total con el nuevo total acumulado, formateado a dos decimales
-            total.Text = totalAcumulado.ToString("F2");
-        }
 
     }
 }
