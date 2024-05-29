@@ -53,8 +53,9 @@ namespace CE_1105.Logica
                         CentroAcopio = partes[2],
                         Estado = partes[3],
                         FechaHora = fecha,
-                        Material = partes[5],
-                        TecColones = int.Parse(partes[6]),
+                        Material = partes[5].Trim(),
+                        Cantidad = int.Parse(partes[6].Trim()),
+                        TecColones = int.Parse(partes[7]),
 
                     });
                 }

@@ -15,6 +15,7 @@ namespace CE_1105.Logica
         public string Estado { get; set; }
         public DateTime FechaHora { get; set; }
         public string Material { get; set; }
+        public int Cantidad { get; set; }
         public int TecColones { get; set; }
 
     }
