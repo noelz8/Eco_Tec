@@ -15,7 +15,7 @@ namespace CE_1105.Logica
         public static void CargarMateriales(ComboBox comboBox)
         {
             // Ruta del archivo de texto
-            string filePath = @"C:\Users\Invitado1\Documents\GitHub\Eco_Tec\Materiales\bin\Debug\prueba_material.txt";
+            string filePath = "prueba_material.txt";
 
             // Leer y procesar el archivo de texto
             if (File.Exists(filePath))
@@ -47,7 +47,7 @@ namespace CE_1105.Logica
         public static void CargarCentros(ComboBox comboBox)
         {
             // Ruta del archivo de texto
-            string filePath = @"C:\Users\Invitado1\Documents\GitHub\Eco_Tec\CE-1105\CE-1105\bin\Debug\net8.0-windows\Centros.txt";
+            string filePath = "Centros.txt";
 
             // Leer y procesar el archivo de texto
             if (File.Exists(filePath))
