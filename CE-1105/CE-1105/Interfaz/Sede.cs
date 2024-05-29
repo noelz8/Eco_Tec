@@ -59,7 +59,7 @@ namespace CE_1105
             {
                 // Si no hay "No válido" en el resultado, muestra un mensaje de éxito
                 LimpiarControles();
-                validadorDatos.EscribirDatosEnArchivo(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
+                LeerEscribir.EscribirDatosEnArchivoSede(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
                 MessageBox.Show($"Los datos son válidos.\nResultado de la validación: {resultado}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 

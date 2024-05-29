@@ -8,6 +8,7 @@ namespace CE_1105
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        private static readonly string[] Provincias = { "Alajuela", "Guanacaste", "Puntarenas", "Limon", "Heredia", "San-Jose", "Cartago" };
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -45,11 +46,11 @@ namespace CE_1105
             // 
             // CProvincias
             // 
-            CProvincias.AutoCompleteCustomSource.AddRange(new string[] { "Alajuela", "Guanacaste", "Puntarenas", "Limon", "Heredia", "San Jose", "Caartago" });
+            CProvincias.AutoCompleteCustomSource.AddRange(Provincias);
             CProvincias.BackColor = Color.White;
             CProvincias.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CProvincias.FormattingEnabled = true;
-            CProvincias.Items.AddRange(new object[] { "Alajuela", "Cartago", "Guanacaste", "Heredia", "Limón", "Puntarenas", "San José" });
+            CProvincias.Items.AddRange(Provincias);
             CProvincias.Location = new Point(301, 125);
             CProvincias.Name = "CProvincias";
             CProvincias.Size = new Size(156, 27);
