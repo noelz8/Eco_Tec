@@ -70,12 +70,12 @@ namespace CE_1105
             // 
             button1.BackColor = SystemColors.ControlDarkDark;
             button1.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(958, 627);
+            button1.Location = new Point(1100, 627);
             button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(280, 72);
+            button1.Size = new Size(138, 72);
             button1.TabIndex = 3;
-            button1.Text = "Provisional";
+            button1.Text = "Salir";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 

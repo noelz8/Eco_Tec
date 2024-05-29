@@ -33,8 +33,8 @@ namespace CE_1105.Interfaz
         {
             // Resetea el total acumulado de materiales
             TransaccionesLog.ResetTotalAcumulado();
-            Principal principal = new Principal();
-            principal.Show();
+            VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
+            vistaDesarrollador.Show();
             this.Close();
         }
 
@@ -48,10 +48,12 @@ namespace CE_1105.Interfaz
                 MessageBox.Show("Transacción finalizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Crea los archivos de la transacción
                 TransaccionesLog.CrearArchivosTransaccion(identificacion, centros, listBox1);
+                //Agrega los Tec Colones
+                TransaccionesLog.AgregarTecColones(identificacion, total);
                 // Resetea el total acumulado de materiales
                 TransaccionesLog.ResetTotalAcumulado();
-                Principal principal = new Principal();
-                principal.Show();
+                VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
+                vistaDesarrollador.Show();
                 this.Close();
             }
         }
