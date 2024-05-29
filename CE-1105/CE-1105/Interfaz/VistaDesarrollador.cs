@@ -38,5 +38,12 @@ namespace CE_1105.Interfaz
             crearMaterial.Show();
             this.Hide();
         }
+
+        private void btn_Historial_Click(object sender, EventArgs e)
+        {
+            Historial historial = new Historial();
+            historial.Show();
+            this.Hide();
+        }
     }
 }

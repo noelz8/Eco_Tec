@@ -84,6 +84,7 @@
             btn_Historial.TabIndex = 4;
             btn_Historial.Text = "Ver Historial";
             btn_Historial.UseVisualStyleBackColor = true;
+            btn_Historial.Click += btn_Historial_Click;
             // 
             // VistaDesarrollador
             // 
