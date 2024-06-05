@@ -138,7 +138,7 @@ namespace CE_1105.Interfaz
                                 }
                                 studentTotal -= total;
                                 studentData[1] = studentTotal.ToString();
-                                newStudentLines.Add(string.Join(",", studentData));
+                                newStudentLines.Add(string.Join(", ", studentData));
                             }
                             else
                             {
