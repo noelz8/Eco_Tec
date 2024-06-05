@@ -45,5 +45,11 @@ namespace CE_1105.Interfaz
             historial.Show();
             this.Hide();
         }
+
+        private void BtnAnular_Click(object sender, EventArgs e)
+        {
+            Anular anular = new Anular();
+            anular.ShowDialog();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CE_1105.Interfaz
 {
-    partial class ListaMateriales
+    partial class Anular
     {
         /// <summary>
         /// Required designer variable.
@@ -28,27 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             dataGridViewMateriales = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
-            Material = new DataGridViewTextBoxColumn();
-            Unidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Estado = new DataGridViewTextBoxColumn();
+            Centro = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
+            Material = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
+            btnAnular = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMateriales).BeginInit();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(237, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(524, 38);
+            label1.TabIndex = 0;
+            label1.Text = "Seleccione transaccion a Eliminar";
             // 
             // dataGridViewMateriales
             // 
             dataGridViewMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Material, Unidad, Precio, Estado, Fecha, Descripcion });
-            dataGridViewMateriales.Location = new Point(10, 9);
+            dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Centro, Fecha, Material, Cantidad, Precio, Total });
+            dataGridViewMateriales.Location = new Point(35, 68);
             dataGridViewMateriales.Margin = new Padding(3, 2, 3, 2);
             dataGridViewMateriales.Name = "dataGridViewMateriales";
             dataGridViewMateriales.RowHeadersWidth = 51;
-            dataGridViewMateriales.Size = new Size(978, 320);
-            dataGridViewMateriales.TabIndex = 0;
+            dataGridViewMateriales.Size = new Size(886, 320);
+            dataGridViewMateriales.TabIndex = 1;
             // 
             // ID
             // 
@@ -57,6 +69,20 @@
             ID.Name = "ID";
             ID.Width = 125;
             // 
+            // Centro
+            // 
+            Centro.HeaderText = "Centro";
+            Centro.MinimumWidth = 6;
+            Centro.Name = "Centro";
+            Centro.Width = 125;
+            // 
+            // Fecha
+            // 
+            Fecha.HeaderText = "Fecha de Registro";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.Width = 125;
+            // 
             // Material
             // 
             Material.HeaderText = "Material";
@@ -64,12 +90,10 @@
             Material.Name = "Material";
             Material.Width = 125;
             // 
-            // Unidad
+            // Cantidad
             // 
-            Unidad.HeaderText = "Unidad";
-            Unidad.MinimumWidth = 6;
-            Unidad.Name = "Unidad";
-            Unidad.Width = 125;
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.Name = "Cantidad";
             // 
             // Precio
             // 
@@ -78,49 +102,50 @@
             Precio.Name = "Precio";
             Precio.Width = 125;
             // 
-            // Estado
+            // Total
             // 
-            Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 6;
-            Estado.Name = "Estado";
-            Estado.Width = 125;
+            Total.HeaderText = "Total";
+            Total.Name = "Total";
             // 
-            // Fecha
+            // btnAnular
             // 
-            Fecha.HeaderText = "Fecha de creación";
-            Fecha.MinimumWidth = 6;
-            Fecha.Name = "Fecha";
-            Fecha.Width = 125;
+            btnAnular.BackColor = SystemColors.MenuHighlight;
+            btnAnular.ForeColor = SystemColors.ControlLightLight;
+            btnAnular.Location = new Point(361, 412);
+            btnAnular.Margin = new Padding(3, 2, 3, 2);
+            btnAnular.Name = "btnAnular";
+            btnAnular.Size = new Size(131, 44);
+            btnAnular.TabIndex = 13;
+            btnAnular.Text = "Anular";
+            btnAnular.UseVisualStyleBackColor = false;
+            btnAnular.Click += new EventHandler(btnAnular_Click);
             // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.Width = 125;
-            // 
-            // ListaMateriales
+            // Anular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(999, 413);
+            ClientSize = new Size(958, 490);
+            Controls.Add(btnAnular);
             Controls.Add(dataGridViewMateriales);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "ListaMateriales";
-            Text = "ListaMateriales";
+            Controls.Add(label1);
+            Name = "Anular";
+            Text = "Anular";
             ((System.ComponentModel.ISupportInitialize)dataGridViewMateriales).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
+        private Label label1;
         private DataGridView dataGridViewMateriales;
+        private Button btnAnular;
         private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Material;
-        private DataGridViewTextBoxColumn Unidad;
-        private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn Centro;
         private DataGridViewTextBoxColumn Fecha;
-        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Material;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Total;
     }
 }
