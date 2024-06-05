@@ -100,27 +100,83 @@ namespace CE_1105.Interfaz
                 // Obtenemos la fila seleccionada
                 DataGridViewRow selectedRow = dataGridViewMateriales.SelectedRows[0];
                 // Obtenemos el ID de la transacción
-                string id = selectedRow.Cells["ID"].Value.ToString();
+                string id = selectedRow.Cells["ID"].Value.ToString().Substring(2);
+                // Guardamos el total
+                double total = double.Parse(selectedRow.Cells["Total"].Value.ToString());
                 // Obtenemos el nombre del archivo
-                string fileName = "TransaccionCentro.txt";
+                string fileName = "TransaccionEstudiante.txt";
                 // Obtenemos todas las líneas del archivo
                 string[] lines = File.ReadAllLines(fileName);
                 // Creamos una lista para almacenar las líneas modificadas
                 List<string> newLines = new List<string>();
+                //Establecemos el estado en el que se pondra la transaccion
+                string Estado = "Desabilitada";
                 // Iteramos sobre las líneas
                 foreach (string line in lines)
                 {
                     // Separamos los datos
                     string[] materialData = line.Split(',');
                     // Si el ID coincide
-
+                    if (materialData[0].Substring(2) == id)
+                    {
+                        string carnet = materialData[1];
+                        // Buscamos el carnet del estudiante
+                        string[] studentTransactionLines = File.ReadAllLines("Billeteras.txt");
+                        List<string> newStudentLines = new List<string>();
+                        foreach (string studentLine in studentTransactionLines)
+                        {
+                            string[] studentData = studentLine.Split(',');
+                            // Si encontramos una coincidencia hacemosel rebajo
+                            if (studentData[0] == carnet)
+                            {
+                                // Rebajamos el total del estudiante
+                                double studentTotal = double.Parse(studentData[1]);
+                                if (total > studentTotal)
+                                {
+                                    MessageBox.Show("El rebajo no se puede hacer porque el total es mayor a la cantidad disponible. La transancionno se puede anular");
+                                    return;
+                                }
+                                studentTotal -= total;
+                                studentData[1] = studentTotal.ToString();
+                                newStudentLines.Add(string.Join(",", studentData));
+                            }
+                            else
+                            {
+                                newStudentLines.Add(studentLine);
+                            }
+                        }
+                        // Sobreescribimos el archivo "Billeteras.txt" con las nuevas líneas
+                        File.WriteAllLines("Billeteras.txt", newStudentLines);
+                        // Buscamos nuevamente la ID en "TransferenciaCentros.txt"
+                        string[] transferenciaCentrosLines = File.ReadAllLines("TransaccionCentro.txt");
+                        List<string> newTransferenciaCentrosLines = new List<string>();
+                        foreach (string transferenciaLine in transferenciaCentrosLines)
+                        {
+                            string[] transferenciaData = transferenciaLine.Split(',');
+                            // Si encontramos una coincidencia cambiamos el estado
+                            if (transferenciaData[0].Substring(2) == id)
+                            {
+                                transferenciaData[3] = Estado;
+                                newTransferenciaCentrosLines.Add(string.Join(",", transferenciaData));
+                            }
+                            else
+                            {
+                                newTransferenciaCentrosLines.Add(transferenciaLine);
+                            }
+                        }
+                        // Sobreescribimos el archivo "TransferenciaCentros.txt" con las nuevas líneas
+                        File.WriteAllLines("TransaccionCentro.txt", newTransferenciaCentrosLines);
+                        MessageBox.Show("El rebajo fue hecho satisfactoriamente");
+                        //VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
+                        //vistaDesarrollador.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Debes de seleccionar por competo la fila. Error:: " + ex.Message);
             }
-
         }
     }
 }
