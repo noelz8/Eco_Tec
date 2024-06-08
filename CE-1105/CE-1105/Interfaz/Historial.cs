@@ -17,7 +17,7 @@ namespace CE_1105.Interfaz
         public Historial()
         {
             InitializeComponent();
-            gestor = new GestorTransacciones("TransaccionCentro.txt", "Centro.txt");
+            gestor = new GestorTransacciones();
             CargarCentros();
         }
 

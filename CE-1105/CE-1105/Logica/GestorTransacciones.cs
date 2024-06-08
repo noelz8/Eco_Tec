@@ -14,17 +14,17 @@ namespace CE_1105.Logica
         private string rutaArchivoTransacciones;
         private string rutaArchivoCentros;
 
-        public GestorTransacciones(string rutaArchivoTransacciones, string rutaArchivoCentros)
+        public GestorTransacciones()
         {
-            this.rutaArchivoTransacciones = rutaArchivoTransacciones;
-            this.rutaArchivoCentros = rutaArchivoCentros;
+            this.rutaArchivoTransacciones = Constantes.RutaArchivoTransacciones;
+            this.rutaArchivoCentros = Constantes.RutaArchivoCentros;
         }
 
         // Método para obtener la lista de centros de acopio desde un archivo
         public List<string> ObtenerCentros()
         {
             var centros = new List<string>();
-            var lineas = File.ReadAllLines("Centros.txt");
+            var lineas = File.ReadAllLines(rutaArchivoCentros);
             foreach (var linea in lineas)
             {
                 var partes = linea.Split(',');
@@ -45,7 +45,17 @@ namespace CE_1105.Logica
 
                 if (partes.Length < 8) continue;
 
-                var fecha = DateTime.ParseExact(partes[4], "dd/M/yyyy H:mm:ss", CultureInfo.InvariantCulture);
+                DateTime fecha;
+                try
+                {
+                    fecha = DateTime.ParseExact(partes[4], "d/M/yyyy H:mm:ss", CultureInfo.InvariantCulture);
+                }
+                catch (FormatException ex)
+                {
+                    // Loggear la excepción o manejarla según sea necesario
+                    Console.WriteLine($"Error al parsear la fecha: {partes[4]} - {ex.Message}");
+                    continue; // Saltar a la siguiente línea si hay un error de formato
+                }
 
                 // Filtrar por centro de acopio y rango de fechas
                 if (partes[2] == centroAcopio && fecha >= fechaInicio && fecha <= fechaFin)
@@ -79,5 +89,6 @@ namespace CE_1105.Logica
             // Ordenar las transacciones por fecha de manera descendente
             return transacciones.OrderByDescending(t => t.FechaHora).ToList();
         }
+
     }
 }

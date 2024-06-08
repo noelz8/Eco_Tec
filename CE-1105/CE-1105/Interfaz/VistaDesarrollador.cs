@@ -51,5 +51,12 @@ namespace CE_1105.Interfaz
             Anular anular = new Anular();
             anular.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VistaGlobal vistaGlobal = new VistaGlobal();
+            vistaGlobal.Show();
+            this.Hide();
+        }
     }
 }
