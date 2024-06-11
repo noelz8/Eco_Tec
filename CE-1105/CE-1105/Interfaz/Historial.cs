@@ -77,8 +77,10 @@ namespace CE_1105.Interfaz
         // Maneja el evento de clic del botón "Volver"
         private void button1_Click(object sender, EventArgs e)
         {
-            VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
-            vistaDesarrollador.Show();
+            //VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
+            //vistaDesarrollador.Show();
+            VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
+            vistaCentroAcopio.Show();
             this.Close();
         }
 

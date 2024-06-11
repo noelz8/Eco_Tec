@@ -38,6 +38,7 @@
             Precio = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             btnAnular = new Button();
+            btnAnularRegresar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMateriales).BeginInit();
             SuspendLayout();
             // 
@@ -45,9 +46,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(237, 9);
+            label1.Location = new Point(271, 12);
             label1.Name = "label1";
-            label1.Size = new Size(524, 38);
+            label1.Size = new Size(661, 48);
             label1.TabIndex = 0;
             label1.Text = "Seleccione transaccion a Eliminar";
             // 
@@ -55,11 +56,10 @@
             // 
             dataGridViewMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Centro, Fecha, Material, Cantidad, Precio, Total });
-            dataGridViewMateriales.Location = new Point(35, 68);
-            dataGridViewMateriales.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewMateriales.Location = new Point(40, 91);
             dataGridViewMateriales.Name = "dataGridViewMateriales";
             dataGridViewMateriales.RowHeadersWidth = 51;
-            dataGridViewMateriales.Size = new Size(886, 320);
+            dataGridViewMateriales.Size = new Size(1013, 427);
             dataGridViewMateriales.TabIndex = 1;
             // 
             // ID
@@ -93,7 +93,9 @@
             // Cantidad
             // 
             Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
+            Cantidad.Width = 125;
             // 
             // Precio
             // 
@@ -105,31 +107,47 @@
             // Total
             // 
             Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
             Total.Name = "Total";
+            Total.Width = 125;
             // 
             // btnAnular
             // 
             btnAnular.BackColor = SystemColors.MenuHighlight;
             btnAnular.ForeColor = SystemColors.ControlLightLight;
-            btnAnular.Location = new Point(361, 412);
-            btnAnular.Margin = new Padding(3, 2, 3, 2);
+            btnAnular.Location = new Point(311, 550);
             btnAnular.Name = "btnAnular";
-            btnAnular.Size = new Size(131, 44);
+            btnAnular.Size = new Size(150, 59);
             btnAnular.TabIndex = 13;
             btnAnular.Text = "Anular";
             btnAnular.UseVisualStyleBackColor = false;
-            btnAnular.Click += new EventHandler(btnAnular_Click);
+            btnAnular.Click += btnAnular_Click;
+            // 
+            // btnAnularRegresar
+            // 
+            btnAnularRegresar.BackColor = SystemColors.MenuHighlight;
+            btnAnularRegresar.ForeColor = SystemColors.ButtonFace;
+            btnAnularRegresar.Location = new Point(529, 550);
+            btnAnularRegresar.Name = "btnAnularRegresar";
+            btnAnularRegresar.Size = new Size(148, 59);
+            btnAnularRegresar.TabIndex = 14;
+            btnAnularRegresar.Text = "Regresar";
+            btnAnularRegresar.UseVisualStyleBackColor = false;
+            btnAnularRegresar.Click += btnAnularRegresar_Click;
             // 
             // Anular
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(958, 490);
+            ClientSize = new Size(1095, 653);
+            Controls.Add(btnAnularRegresar);
             Controls.Add(btnAnular);
             Controls.Add(dataGridViewMateriales);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Anular";
             Text = "Anular";
+            Load += Anular_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMateriales).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -147,5 +165,6 @@
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Total;
+        private Button btnAnularRegresar;
     }
 }

@@ -33,8 +33,10 @@ namespace CE_1105.Interfaz
         {
             // Resetea el total acumulado de materiales
             TransaccionesLog.ResetTotalAcumulado();
-            VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
-            vistaDesarrollador.Show();
+            //VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
+            //vistaDesarrollador.Show();
+            VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
+            vistaCentroAcopio.Show();
             this.Close();
         }
 
