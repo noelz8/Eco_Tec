@@ -98,8 +98,10 @@ namespace CE_1105
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
-            vistaDesarrollador.Show();
+            //VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
+            //vistaDesarrollador.Show();
+            VistaAdministrador vistaAdministrador = new VistaAdministrador();
+            vistaAdministrador.Show();
             this.Close();
         }
     }
