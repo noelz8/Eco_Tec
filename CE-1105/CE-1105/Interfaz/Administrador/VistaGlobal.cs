@@ -1,5 +1,4 @@
-﻿using CE_1105.Logica;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CE_1105.Logica;
+using CE_1105.Logica.VerTransacciones;
 
 namespace CE_1105.Interfaz
 {

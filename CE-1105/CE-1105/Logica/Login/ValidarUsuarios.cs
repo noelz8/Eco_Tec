@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CE_1105.Interfaz;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.Login
 {
     public class ValidacionesSistema
     {

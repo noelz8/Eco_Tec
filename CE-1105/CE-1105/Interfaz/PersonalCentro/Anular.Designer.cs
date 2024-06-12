@@ -46,9 +46,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(271, 12);
+            label1.Location = new Point(339, 15);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(661, 48);
+            label1.Size = new Size(791, 58);
             label1.TabIndex = 0;
             label1.Text = "Seleccione transaccion a Eliminar";
             // 
@@ -56,11 +57,13 @@
             // 
             dataGridViewMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Centro, Fecha, Material, Cantidad, Precio, Total });
-            dataGridViewMateriales.Location = new Point(40, 91);
+            dataGridViewMateriales.Location = new Point(50, 114);
+            dataGridViewMateriales.Margin = new Padding(4, 4, 4, 4);
             dataGridViewMateriales.Name = "dataGridViewMateriales";
             dataGridViewMateriales.RowHeadersWidth = 51;
-            dataGridViewMateriales.Size = new Size(1013, 427);
+            dataGridViewMateriales.Size = new Size(1266, 534);
             dataGridViewMateriales.TabIndex = 1;
+            dataGridViewMateriales.CellContentClick += dataGridViewMateriales_CellContentClick;
             // 
             // ID
             // 
@@ -115,9 +118,10 @@
             // 
             btnAnular.BackColor = SystemColors.MenuHighlight;
             btnAnular.ForeColor = SystemColors.ControlLightLight;
-            btnAnular.Location = new Point(311, 550);
+            btnAnular.Location = new Point(389, 688);
+            btnAnular.Margin = new Padding(4, 4, 4, 4);
             btnAnular.Name = "btnAnular";
-            btnAnular.Size = new Size(150, 59);
+            btnAnular.Size = new Size(188, 74);
             btnAnular.TabIndex = 13;
             btnAnular.Text = "Anular";
             btnAnular.UseVisualStyleBackColor = false;
@@ -127,9 +131,10 @@
             // 
             btnAnularRegresar.BackColor = SystemColors.MenuHighlight;
             btnAnularRegresar.ForeColor = SystemColors.ButtonFace;
-            btnAnularRegresar.Location = new Point(529, 550);
+            btnAnularRegresar.Location = new Point(661, 688);
+            btnAnularRegresar.Margin = new Padding(4, 4, 4, 4);
             btnAnularRegresar.Name = "btnAnularRegresar";
-            btnAnularRegresar.Size = new Size(148, 59);
+            btnAnularRegresar.Size = new Size(185, 74);
             btnAnularRegresar.TabIndex = 14;
             btnAnularRegresar.Text = "Regresar";
             btnAnularRegresar.UseVisualStyleBackColor = false;
@@ -137,14 +142,14 @@
             // 
             // Anular
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1095, 653);
+            ClientSize = new Size(1369, 816);
             Controls.Add(btnAnularRegresar);
             Controls.Add(btnAnular);
             Controls.Add(dataGridViewMateriales);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Anular";
             Text = "Anular";
             Load += Anular_Load;

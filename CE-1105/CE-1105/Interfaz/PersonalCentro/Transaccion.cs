@@ -1,4 +1,4 @@
-﻿using CE_1105.Logica;
+﻿using CE_1105.Logica.Transacciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,9 +54,15 @@ namespace CE_1105.Interfaz
                 TransaccionesLog.AgregarTecColones(identificacion, total);
                 // Resetea el total acumulado de materiales
                 TransaccionesLog.ResetTotalAcumulado();
-                VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
-                vistaDesarrollador.Show();
+                VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
+                vistaCentroAcopio.Show();
                 this.Close();
+            }
+            else
+            {
+                // Si la transacción no es válida, muestra un mensaje de error
+                MessageBox.Show("La transacción no es válida. Por favor, revise los datos e intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 

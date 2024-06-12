@@ -40,9 +40,10 @@
             // 
             BotonVerificacion.BackColor = Color.Blue;
             BotonVerificacion.ForeColor = SystemColors.ButtonFace;
-            BotonVerificacion.Location = new Point(342, 322);
+            BotonVerificacion.Location = new Point(428, 402);
+            BotonVerificacion.Margin = new Padding(4, 4, 4, 4);
             BotonVerificacion.Name = "BotonVerificacion";
-            BotonVerificacion.Size = new Size(120, 41);
+            BotonVerificacion.Size = new Size(150, 51);
             BotonVerificacion.TabIndex = 0;
             BotonVerificacion.Text = "Continuar";
             BotonVerificacion.UseVisualStyleBackColor = false;
@@ -52,9 +53,10 @@
             // 
             TituloPagina.AutoSize = true;
             TituloPagina.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TituloPagina.Location = new Point(257, 9);
+            TituloPagina.Location = new Point(321, 11);
+            TituloPagina.Margin = new Padding(4, 0, 4, 0);
             TituloPagina.Name = "TituloPagina";
-            TituloPagina.Size = new Size(300, 38);
+            TituloPagina.Size = new Size(351, 45);
             TituloPagina.TabIndex = 1;
             TituloPagina.Text = "Centro de acopio XTEC";
             // 
@@ -62,9 +64,10 @@
             // 
             Usuario.AutoSize = true;
             Usuario.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Usuario.Location = new Point(367, 107);
+            Usuario.Location = new Point(459, 134);
+            Usuario.Margin = new Padding(4, 0, 4, 0);
             Usuario.Name = "Usuario";
-            Usuario.Size = new Size(68, 23);
+            Usuario.Size = new Size(83, 30);
             Usuario.TabIndex = 2;
             Usuario.Text = "Usuario";
             // 
@@ -72,37 +75,42 @@
             // 
             Contrasena.AutoSize = true;
             Contrasena.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Contrasena.Location = new Point(352, 216);
+            Contrasena.Location = new Point(440, 270);
+            Contrasena.Margin = new Padding(4, 0, 4, 0);
             Contrasena.Name = "Contrasena";
-            Contrasena.Size = new Size(97, 23);
+            Contrasena.Size = new Size(118, 30);
             Contrasena.TabIndex = 3;
             Contrasena.Text = "Contraseña";
             // 
             // datoUsuario
             // 
-            datoUsuario.Location = new Point(342, 145);
+            datoUsuario.Location = new Point(428, 181);
+            datoUsuario.Margin = new Padding(4, 4, 4, 4);
             datoUsuario.Name = "datoUsuario";
-            datoUsuario.Size = new Size(125, 27);
+            datoUsuario.Size = new Size(155, 31);
             datoUsuario.TabIndex = 4;
+            datoUsuario.TextChanged += datoUsuario_TextChanged;
             // 
             // datoContrasena
             // 
-            datoContrasena.Location = new Point(342, 251);
+            datoContrasena.Location = new Point(428, 314);
+            datoContrasena.Margin = new Padding(4, 4, 4, 4);
             datoContrasena.Name = "datoContrasena";
-            datoContrasena.Size = new Size(125, 27);
+            datoContrasena.Size = new Size(155, 31);
             datoContrasena.TabIndex = 5;
             // 
             // ValidacionUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
             Controls.Add(datoContrasena);
             Controls.Add(datoUsuario);
             Controls.Add(Contrasena);
             Controls.Add(Usuario);
             Controls.Add(TituloPagina);
             Controls.Add(BotonVerificacion);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "ValidacionUsuarios";
             ResumeLayout(false);
             PerformLayout();

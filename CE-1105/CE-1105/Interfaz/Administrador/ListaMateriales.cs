@@ -41,5 +41,10 @@ namespace CE_1105.Interfaz
                 MessageBox.Show("Error cargar materiales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dataGridViewMateriales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

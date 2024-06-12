@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CE_1105;
-using CE_1105.Logica;
+using CE_1105.Logica.Materiales;
 
 namespace CE_1105.Interfaz
 {

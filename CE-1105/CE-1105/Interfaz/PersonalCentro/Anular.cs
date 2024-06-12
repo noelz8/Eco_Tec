@@ -167,8 +167,8 @@ namespace CE_1105.Interfaz
                         // Sobreescribimos el archivo "TransferenciaCentros.txt" con las nuevas líneas
                         File.WriteAllLines("TransaccionCentro.txt", newTransferenciaCentrosLines);
                         MessageBox.Show("El rebajo fue hecho satisfactoriamente");
-                        //VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
-                        //vistaDesarrollador.Show();
+                        VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
+                        vistaCentroAcopio.Show();
                         this.Close();
                     }
                 }
@@ -189,6 +189,11 @@ namespace CE_1105.Interfaz
             VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
             vistaCentroAcopio.Show();
             this.Close();
+        }
+
+        private void dataGridViewMateriales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

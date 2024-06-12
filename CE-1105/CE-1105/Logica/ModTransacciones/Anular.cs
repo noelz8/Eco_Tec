@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.ModTransacciones
 {
     internal class Anular
     {

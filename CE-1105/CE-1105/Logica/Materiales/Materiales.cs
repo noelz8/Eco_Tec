@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.Materiales
 {
     public class Material
     {
@@ -79,7 +79,7 @@ namespace CE_1105.Logica
             }
 
             // Generar identificador único
-            string id = Material.GenerarId();
+            string id = GenerarId();
 
             // Crear objeto Material
             Material material = new Material(id, nombre, unidad, valorUnitario, estado, DateTime.Now, descripcion);

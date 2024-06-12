@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CE_1105.Interfaz;
-using CE_1105.Logica;
+using CE_1105.Logica.General;
 
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.VerTransacciones
 {
     public class GestorGlobal
     {
@@ -16,7 +16,7 @@ namespace CE_1105.Logica
         private string rutaArchivoTransacciones;
         public GestorGlobal()
         {
-            this.rutaArchivoTransacciones = Constantes.RutaArchivoTransacciones;
+            rutaArchivoTransacciones = Constantes.RutaArchivoTransacciones;
         }
 
         public List<TransaccionCentro> ObtenerTransacciones(DateTime fechaInicio, DateTime fechaFin)
