@@ -43,10 +43,11 @@
             // 
             dataGridViewMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Material, Unidad, Precio, Estado, Fecha, Descripcion });
-            dataGridViewMateriales.Location = new Point(12, 12);
+            dataGridViewMateriales.Location = new Point(10, 9);
+            dataGridViewMateriales.Margin = new Padding(3, 2, 3, 2);
             dataGridViewMateriales.Name = "dataGridViewMateriales";
             dataGridViewMateriales.RowHeadersWidth = 51;
-            dataGridViewMateriales.Size = new Size(1118, 426);
+            dataGridViewMateriales.Size = new Size(978, 320);
             dataGridViewMateriales.TabIndex = 0;
             // 
             // ID
@@ -100,10 +101,11 @@
             // 
             // ListaMateriales
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1142, 450);
+            ClientSize = new Size(999, 413);
             Controls.Add(dataGridViewMateriales);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ListaMateriales";
             Text = "ListaMateriales";
             ((System.ComponentModel.ISupportInitialize)dataGridViewMateriales).EndInit();
