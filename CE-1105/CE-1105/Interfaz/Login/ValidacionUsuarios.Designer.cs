@@ -41,7 +41,7 @@
             BotonVerificacion.BackColor = Color.Blue;
             BotonVerificacion.ForeColor = SystemColors.ButtonFace;
             BotonVerificacion.Location = new Point(428, 402);
-            BotonVerificacion.Margin = new Padding(4, 4, 4, 4);
+            BotonVerificacion.Margin = new Padding(4);
             BotonVerificacion.Name = "BotonVerificacion";
             BotonVerificacion.Size = new Size(150, 51);
             BotonVerificacion.TabIndex = 0;
@@ -84,19 +84,19 @@
             // 
             // datoUsuario
             // 
-            datoUsuario.Location = new Point(428, 181);
-            datoUsuario.Margin = new Padding(4, 4, 4, 4);
+            datoUsuario.Location = new Point(381, 184);
+            datoUsuario.Margin = new Padding(4);
             datoUsuario.Name = "datoUsuario";
-            datoUsuario.Size = new Size(155, 31);
+            datoUsuario.Size = new Size(228, 31);
             datoUsuario.TabIndex = 4;
             datoUsuario.TextChanged += datoUsuario_TextChanged;
             // 
             // datoContrasena
             // 
-            datoContrasena.Location = new Point(428, 314);
-            datoContrasena.Margin = new Padding(4, 4, 4, 4);
+            datoContrasena.Location = new Point(381, 314);
+            datoContrasena.Margin = new Padding(4);
             datoContrasena.Name = "datoContrasena";
-            datoContrasena.Size = new Size(155, 31);
+            datoContrasena.Size = new Size(228, 31);
             datoContrasena.TabIndex = 5;
             // 
             // ValidacionUsuarios
@@ -110,7 +110,7 @@
             Controls.Add(Usuario);
             Controls.Add(TituloPagina);
             Controls.Add(BotonVerificacion);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "ValidacionUsuarios";
             ResumeLayout(false);
             PerformLayout();

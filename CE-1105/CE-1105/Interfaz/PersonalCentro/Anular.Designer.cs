@@ -55,12 +55,19 @@
             // 
             // dataGridViewMateriales
             // 
+            dataGridViewMateriales.ReadOnly = true;
+            dataGridViewMateriales.AllowUserToAddRows = false;
+            dataGridViewMateriales.AllowUserToResizeColumns = false;
+            dataGridViewMateriales.AllowUserToResizeRows = false;
+            dataGridViewMateriales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Centro, Fecha, Material, Cantidad, Precio, Total });
             dataGridViewMateriales.Location = new Point(50, 114);
-            dataGridViewMateriales.Margin = new Padding(4, 4, 4, 4);
+            dataGridViewMateriales.Margin = new Padding(4);
             dataGridViewMateriales.Name = "dataGridViewMateriales";
+            dataGridViewMateriales.RowHeadersVisible = false;
             dataGridViewMateriales.RowHeadersWidth = 51;
+            dataGridViewMateriales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewMateriales.Size = new Size(1266, 534);
             dataGridViewMateriales.TabIndex = 1;
             dataGridViewMateriales.CellContentClick += dataGridViewMateriales_CellContentClick;
@@ -70,56 +77,56 @@
             ID.HeaderText = "ID";
             ID.MinimumWidth = 6;
             ID.Name = "ID";
-            ID.Width = 125;
+            ID.Width = 66;
             // 
             // Centro
             // 
             Centro.HeaderText = "Centro";
             Centro.MinimumWidth = 6;
             Centro.Name = "Centro";
-            Centro.Width = 125;
+            Centro.Width = 101;
             // 
             // Fecha
             // 
             Fecha.HeaderText = "Fecha de Registro";
             Fecha.MinimumWidth = 6;
             Fecha.Name = "Fecha";
-            Fecha.Width = 125;
+            Fecha.Width = 172;
             // 
             // Material
             // 
             Material.HeaderText = "Material";
             Material.MinimumWidth = 6;
             Material.Name = "Material";
-            Material.Width = 125;
+            Material.Width = 111;
             // 
             // Cantidad
             // 
             Cantidad.HeaderText = "Cantidad";
             Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
-            Cantidad.Width = 125;
+            Cantidad.Width = 119;
             // 
             // Precio
             // 
             Precio.HeaderText = "Tec-colones";
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
-            Precio.Width = 125;
+            Precio.Width = 140;
             // 
             // Total
             // 
             Total.HeaderText = "Total";
             Total.MinimumWidth = 6;
             Total.Name = "Total";
-            Total.Width = 125;
+            Total.Width = 85;
             // 
             // btnAnular
             // 
             btnAnular.BackColor = SystemColors.MenuHighlight;
             btnAnular.ForeColor = SystemColors.ControlLightLight;
             btnAnular.Location = new Point(389, 688);
-            btnAnular.Margin = new Padding(4, 4, 4, 4);
+            btnAnular.Margin = new Padding(4);
             btnAnular.Name = "btnAnular";
             btnAnular.Size = new Size(188, 74);
             btnAnular.TabIndex = 13;
@@ -132,7 +139,7 @@
             btnAnularRegresar.BackColor = SystemColors.MenuHighlight;
             btnAnularRegresar.ForeColor = SystemColors.ButtonFace;
             btnAnularRegresar.Location = new Point(661, 688);
-            btnAnularRegresar.Margin = new Padding(4, 4, 4, 4);
+            btnAnularRegresar.Margin = new Padding(4);
             btnAnularRegresar.Name = "btnAnularRegresar";
             btnAnularRegresar.Size = new Size(185, 74);
             btnAnularRegresar.TabIndex = 14;
