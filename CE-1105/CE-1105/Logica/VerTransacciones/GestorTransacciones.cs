@@ -1,4 +1,5 @@
 ﻿using CE_1105.Interfaz;
+using CE_1105.Logica.General;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.VerTransacciones
 {
     // Clase que gestiona las operaciones relacionadas con las transacciones
     public class GestorTransacciones
@@ -16,8 +17,8 @@ namespace CE_1105.Logica
 
         public GestorTransacciones()
         {
-            this.rutaArchivoTransacciones = Constantes.RutaArchivoTransacciones;
-            this.rutaArchivoCentros = Constantes.RutaArchivoCentros;
+            rutaArchivoTransacciones = Constantes.RutaArchivoTransacciones;
+            rutaArchivoCentros = Constantes.RutaArchivoCentros;
         }
 
         // Método para obtener la lista de centros de acopio desde un archivo

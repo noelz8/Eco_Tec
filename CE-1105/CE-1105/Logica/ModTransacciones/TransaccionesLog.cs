@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CE_1105.Logica.General;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.Transacciones
 {
     public class TransaccionesLog
     {
@@ -135,6 +136,7 @@ namespace CE_1105.Logica
                 MessageBox.Show("Por favor, seleccione un centro de acopio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             // Verificación de mínimo 1 seleccionado
 
             if (listBox1.Items.Count == 0)
@@ -146,66 +148,45 @@ namespace CE_1105.Logica
             return true;
         }
 
-        // Método para crear los archivos de transacción de centro y estudiante
+        /// Coordina la creación de archivos de transacción basada en la información ingresada en la interfaz.
+       
         public static void CrearArchivosTransaccion(TextBox identificacion, ComboBox centros, ListBox listBox1)
         {
-            // Establecer las rutas de los archivos de transacción
             string centroFilePath = Constantes.RutaArchivoTransacciones;
             string estudianteFilePath = Constantes.RutaArchivoEstudiantes;
-
-            DateTime fecha = DateTime.Now;
-
-            // Generar un ID único de 12 caracteres alfanuméricos y verificar que no exista en el archivo
-            string idUnico;
-            do
-            {
-                idUnico = GenerarIDUnico();
-            } while (IdUnico(centroFilePath, $"R-{idUnico}"));
-
+            string idUnico = GenerarIdUnicoValido(centroFilePath);
             string idCentro = centros.SelectedItem.ToString().Split(',')[0].Trim();
 
-            // Construir la línea de texto para el archivo de transacción de centro
-            StringBuilder centroLine = new StringBuilder();
-            centroLine.Append($"R-{idUnico},T-{idUnico},{idCentro},Ingreso,{fecha}");
+            string centroLine = ConstruirLineaTransaccion(idUnico, idCentro, identificacion, listBox1, false);
+            EscribirEnArchivo(centroFilePath, centroLine);
 
-            // Repetir sobre los elementos del ListBox para agregar los detalles de los materiales
+            string estudianteLine = ConstruirLineaTransaccion(idUnico, idCentro, identificacion, listBox1, true);
+            EscribirEnArchivo(estudianteFilePath, estudianteLine);
+        }
+
+        /// Construye una única línea de texto que representa una transacción, para ser escrita en un archivo.     
+        public static string ConstruirLineaTransaccion(string idUnico, string idCentro, TextBox identificacion, ListBox listBox1, bool esEstudiante)
+        {
+            StringBuilder line = new StringBuilder();
+            line.Append(esEstudiante ? $"T-{idUnico},{identificacion.Text},{idCentro}" : $"R-{idUnico},T-{idUnico},{idCentro},Ingreso,{DateTime.Now}");
+
             foreach (var item in listBox1.Items)
             {
-                string[] parts = item.ToString().Split(',');
-                string nombreMaterial = parts[1].Trim();
-                string cantidad = parts.FirstOrDefault(p => p.Contains("Cantidad:")).Split(':')[1].Trim();
-                string subtotal = parts.FirstOrDefault(p => p.Contains("Subtotal:")).Split(':')[1].Trim();
-
-                // Agregar el nombre del material, la cantidad y el subtotal a la línea de texto
-                centroLine.Append($",{nombreMaterial},{cantidad},{subtotal}");
+                var parts = item.ToString().Split(',');
+                var nombreMaterial = parts[1].Trim();
+                var detalles = parts.Where(p => p.Contains("Cantidad:") || p.Contains("Subtotal:")).Select(p => p.Split(':')[1].Trim()).ToArray();
+                line.Append($",{nombreMaterial},{detalles[0]},{detalles[1]}");
             }
 
-            // Escribir la línea de texto en el archivo de transacción de centro
-            using (StreamWriter swCentro = new StreamWriter(centroFilePath, true))
+            return line.ToString();
+        }
+
+            /// Escribe una línea de datos en un archivo especificado.
+            public static void EscribirEnArchivo(string filePath, string dataLine)
+        {
+            using (StreamWriter sw = new StreamWriter(filePath, true)) 
             {
-                swCentro.WriteLine(centroLine.ToString());
-            }
-
-            // Construir la línea de texto para el archivo de transacción de estudiante
-            StringBuilder estudianteLine = new StringBuilder();
-            estudianteLine.Append($"T-{idUnico},{identificacion.Text},{idCentro}");
-
-            // Iterar sobre los elementos del ListBox para agregar los detalles de los materiales
-            foreach (var item in listBox1.Items)
-            {
-                string[] parts = item.ToString().Split(',');
-                string nombreMaterial = parts[1].Trim();
-                string cantidad = parts.FirstOrDefault(p => p.Contains("Cantidad:")).Split(':')[1].Trim();
-                string subtotal = parts.FirstOrDefault(p => p.Contains("Subtotal:")).Split(':')[1].Trim();
-
-                // Agregar el nombre del material, la cantidad y el subtotal a la línea de texto
-                estudianteLine.Append($",{nombreMaterial},{cantidad},{subtotal}");
-            }
-
-            // Escribir las líneas de texto en el archivo de transacción de estudiante
-            using (StreamWriter swEstudiante = new StreamWriter(estudianteFilePath, true))
-            {
-                swEstudiante.WriteLine(estudianteLine.ToString());
+                sw.WriteLine(dataLine);  // Escribe la línea de datos en el archivo
             }
         }
 
@@ -216,6 +197,17 @@ namespace CE_1105.Logica
             var random = new Random();
             return new string(Enumerable.Repeat(chars, 12)
               .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        /// Genera un ID único y asegura que no exista ya en el archivo dado.
+        public static string GenerarIdUnicoValido(string filePath)
+        {
+            string idUnico;
+            do
+            {
+                idUnico = GenerarIDUnico();  // Llama a la función que genera un ID basado en caracteres aleatorios
+            } while (IdUnico(filePath, $"R-{idUnico}"));  // Verifica si el ID ya existe en el archivo especificado
+            return idUnico;
         }
 
         // Método para verificar si un ID único ya existe en el archivo TransaccionCentro.txt
@@ -288,13 +280,20 @@ namespace CE_1105.Logica
                 return;
             }
 
-            // Intenta convertir el texto del TextBox de cantidad a un número
+            // Intenta convertir el texto del TextBox de cantidad a un número positivo
             if (!double.TryParse(cantidad.Text, out double cantidadIngresada))
             {
+                // Si la entrada no se puede convertir a un número, muestra un mensaje de error.
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            if (cantidadIngresada <= 0)
+            {
+                // Verifica si el número es positivo y mayor que cero
+                MessageBox.Show("Por favor, ingrese una cantidad positiva mayor que cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             // Obtiene el material seleccionado del ComboBox y lo divide en partes
             string materialSeleccionado = listaMateriales.SelectedItem.ToString();
             string[] parts = materialSeleccionado.Split(',');

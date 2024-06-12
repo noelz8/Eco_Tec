@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.VerTransacciones
 {
     // Clase que representa los detalles de una transacción para mostrarlos en el DataGrid
     public class TransaccionDetalle

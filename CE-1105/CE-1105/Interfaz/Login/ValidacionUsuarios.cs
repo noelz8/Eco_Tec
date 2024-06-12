@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CE_1105;
-using CE_1105.Logica;
+using CE_1105.Logica.Login;
 
 namespace CE_1105.Interfaz
 {
@@ -34,6 +34,11 @@ namespace CE_1105.Interfaz
         private void ValidacionUsuarios_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void datoUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

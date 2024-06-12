@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CE_1105.Interfaz;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.VerTransacciones
 {
     // Clase que representa una transacción
     public class ManejoTransaccion
@@ -14,7 +14,7 @@ namespace CE_1105.Logica
         public string CentroAcopio { get; set; }
         public string Estado { get; set; }
         public DateTime FechaHora { get; set; }
-        public List<GridMateriales>  Materiales { get; set; } = new List<GridMateriales>();
+        public List<GridMateriales> Materiales { get; set; } = new List<GridMateriales>();
 
 
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CE_1105.Logica
+namespace CE_1105.Logica.VerTransacciones
 {
     // Clase que representa un material dentro de una transacción
     public class GridMateriales
