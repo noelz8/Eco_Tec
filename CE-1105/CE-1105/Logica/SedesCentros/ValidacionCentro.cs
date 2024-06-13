@@ -23,7 +23,7 @@ public class ValidacionCentro
         string identificacion = VerificaIde(IDE);
 
         // Construye el mensaje de resultado
-        string resultado = $"Identificacion: {identificacion}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoSeleccion}, Provincia: {estadoCheckBoxString}";
+        string resultado = $"Identificacion: {identificacion}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoCheckBoxString}, Provincia: {estadoSeleccion}";
 
         return resultado;
     }
@@ -89,6 +89,22 @@ public class ValidacionCentro
 
     public string VerificaIde(string IDE)
     {
+        // Verifica si la cadena IDE es nula o vacía
+        if (string.IsNullOrEmpty(IDE))
+        {
+            MessageBox.Show("El código no puede ser nulo o vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return "No válido";
+        }
+
+        // Verifica si el IDE es alfanumérico usando una expresión regular
+        string strRegex = @"^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]+$";
+        Regex re = new Regex(strRegex);
+        if (!re.IsMatch(IDE))
+        {
+            MessageBox.Show("El código debe ser alfanumérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return "No válido";
+        }
+
         // Ruta del archivo donde se almacenan los códigos
         string rutaArchivo = Path.Combine(Application.StartupPath, "Centros.txt");
 
