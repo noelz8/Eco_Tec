@@ -93,42 +93,62 @@ namespace CE_1105.Interfaz
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
         private void btnAnular_Click(object sender, EventArgs e)
         {
             try
             {
-                ArchivoManipulador manipulador = new ArchivoManipulador();
-                DataGridViewRow selectedRow = dataGridViewMateriales.SelectedRows[0];
-                string id = selectedRow.Cells["ID"].Value.ToString().Substring(2);
-                double total = double.Parse(selectedRow.Cells["Total"].Value.ToString());
-                string fileName = "TransaccionEstudiante.txt";
-                string[] lines = File.ReadAllLines(fileName);
-
-                List<string> newLines = new List<string>();
-                string Estado = "Desabilitada";
-
-                foreach (string line in lines)
+                if (dataGridViewMateriales.SelectedRows.Count == 0)
                 {
-                    string[] materialData = line.Split(',');
-                    if (materialData[0].Substring(2) == id)
-                    {
-                        string carnet = materialData[1];
+                    MessageBox.Show("Debes seleccionar una transacción.");
+                    return;
+                }
 
+                DataGridViewRow selectedRow = dataGridViewMateriales.SelectedRows[0];
+                string id = selectedRow.Cells["ID"].Value.ToString();
+                string centro = selectedRow.Cells["Centro"].Value.ToString();
+                string fecha = selectedRow.Cells["Fecha"].Value.ToString();
+                string material = selectedRow.Cells["Material"].Value.ToString();
+                string cantidad = selectedRow.Cells["Cantidad"].Value.ToString();
+                double total = double.Parse(selectedRow.Cells["Total"].Value.ToString());
+
+                // Mensaje de confirmación
+                string mensaje = $"¿Estás seguro que quieres anular la siguiente transacción?\n\n" +
+                                 $"ID: {id}\n" +
+                                 $"Centro: {centro}\n" +
+                                 $"Fecha: {fecha}\n" +
+                                 $"Material: {material}\n" +
+                                 $"Cantidad: {cantidad}";
+
+                DialogResult result = MessageBox.Show(mensaje, "Confirmar Anulación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    ArchivoManipulador manipulador = new ArchivoManipulador();
+                    string Estado = "Desabilitada";
+
+                    // Obtén el carnet usando el id
+                    string carnet = manipulador.ObtenerCarnetPorId(id.Substring(2)); // Quitar el prefijo
+
+                    if (carnet != null)
+                    {
                         manipulador.ModificarBilletera(carnet, total, Estado);
-                        manipulador.ModificarTransferenciaCentro(id, Estado);
-                        
+                        manipulador.ModificarTransferenciaCentro(id.Substring(2), Estado); // Quitar el prefijo
 
                         MessageBox.Show("El rebajo fue hecho satisfactoriamente");
                         VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
                         vistaCentroAcopio.Show();
                         this.Close();
-                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el carnet correspondiente.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Debes de seleccionar por completo la fila. Error:: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 

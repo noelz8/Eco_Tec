@@ -9,45 +9,66 @@ namespace CE_1105.Logica.ModTransacciones
 {
     public class ArchivoManipulador
     {
-        public void ModificarBilletera(string carnet, double total, string idEstado)
+        public void ModificarBilletera(string carnet, double total, string estado)
         {
-            string[] billeteraLines = File.ReadAllLines("Billeteras.txt");
-            List<string> newBilleteraLines = new List<string>();
-
-            foreach (string line in billeteraLines)
+            // Implementación para modificar la billetera
+            string fileName = "Billeteras.txt";
+            if (File.Exists(fileName))
             {
-                string[] data = line.Split(',');
-                if (data[0] == carnet)
+                var lines = File.ReadAllLines(fileName).ToList();
+                for (int i = 0; i < lines.Count; i++)
                 {
-                    double currentTotal = double.Parse(data[1]);
-                    if (total > currentTotal)
+                    var data = lines[i].Split(',');
+                    if (data[0] == carnet)
                     {
-                        throw new Exception("El rebajo no se puede hacer porque el total es mayor a la cantidad disponible.");
+                        double currentTotal = double.Parse(data[1]);
+                        currentTotal -= total;
+                        lines[i] = $"{carnet},{currentTotal}";
+                        File.WriteAllLines(fileName, lines);
+                        return;
                     }
-                    data[1] = ((currentTotal - total).ToString());
                 }
-                newBilleteraLines.Add(string.Join(", ", data));
             }
-
-            File.WriteAllLines("Billeteras.txt", newBilleteraLines);
         }
 
         public void ModificarTransferenciaCentro(string id, string estado)
         {
-            string[] transferenciaLines = File.ReadAllLines("TransaccionCentro.txt");
-            List<string> newTransferenciaLines = new List<string>();
-
-            foreach (string line in transferenciaLines)
+            // Implementación para modificar la transferencia del centro
+            string fileName = "TransaccionCentro.txt";
+            if (File.Exists(fileName))
             {
-                string[] data = line.Split(',');
-                if (data[0].Substring(2) == id)
+                var lines = File.ReadAllLines(fileName).ToList();
+                for (int i = 0; i < lines.Count; i++)
                 {
-                    data[3] = estado;
+                    var data = lines[i].Split(',');
+                    if (data[0].Substring(2) == id)
+                    {
+                        data[3] = estado; // Asumiendo que la columna 4 es la columna de estado
+                        lines[i] = string.Join(",", data);
+                        File.WriteAllLines(fileName, lines);
+                        return;
+                    }
                 }
-                newTransferenciaLines.Add(string.Join(",", data));
             }
+        }
 
-            File.WriteAllLines("TransaccionCentro.txt", newTransferenciaLines);
+        public string ObtenerCarnetPorId(string id)
+        {
+            // Implementación para obtener el carnet por id
+            string fileName = "TransaccionEstudiante.txt";
+            if (File.Exists(fileName))
+            {
+                var lines = File.ReadAllLines(fileName);
+                foreach (var line in lines)
+                {
+                    var data = line.Split(',');
+                    if (data[0].Substring(2) == id)
+                    {
+                        return data[1];
+                    }
+                }
+            }
+            return null;
         }
     }
 }
