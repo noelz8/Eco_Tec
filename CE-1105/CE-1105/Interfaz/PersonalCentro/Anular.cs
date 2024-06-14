@@ -112,13 +112,24 @@ namespace CE_1105.Interfaz
                 string cantidad = selectedRow.Cells["Cantidad"].Value.ToString();
                 double total = double.Parse(selectedRow.Cells["Total"].Value.ToString());
 
+                // Procesar materiales y cantidades para mostrar en el mensaje
+                string[] materialesArray = material.Split(',');
+                string[] cantidadesArray = cantidad.Split(',');
+                List<string> materialesConCantidades = new List<string>();
+
+                for (int i = 0; i < materialesArray.Length; i++)
+                {
+                    materialesConCantidades.Add($"{materialesArray[i].Trim()} - {cantidadesArray[i].Trim()}");
+                }
+
+                string materialesYcantidades = string.Join(", ", materialesConCantidades);
+
                 // Mensaje de confirmación
                 string mensaje = $"¿Estás seguro que quieres anular la siguiente transacción?\n\n" +
                                  $"ID: {id}\n" +
                                  $"Centro: {centro}\n" +
                                  $"Fecha: {fecha}\n" +
-                                 $"Material: {material}\n" +
-                                 $"Cantidad: {cantidad}";
+                                 $"Material y cantidad: {materialesYcantidades}";
 
                 DialogResult result = MessageBox.Show(mensaje, "Confirmar Anulación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -151,6 +162,7 @@ namespace CE_1105.Interfaz
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
 
         private void Anular_Load(object sender, EventArgs e)
