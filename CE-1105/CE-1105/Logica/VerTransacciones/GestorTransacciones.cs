@@ -58,8 +58,8 @@ namespace CE_1105.Logica.VerTransacciones
                     continue; // Saltar a la siguiente línea si hay un error de formato
                 }
 
-                // Filtrar por centro de acopio y rango de fechas
-                if (partes[2] == centroAcopio && fecha >= fechaInicio && fecha <= fechaFin)
+                // Filtrar por centro de acopio y rango de fechas o misma fecha
+                if (partes[2] == centroAcopio && (fecha >= fechaInicio && fecha <= fechaFin || (fechaInicio.Date == fechaFin.Date && fecha.Date == fechaInicio.Date)))
                 {
                     var transaccion = new ManejoTransaccion
                     {
@@ -90,6 +90,7 @@ namespace CE_1105.Logica.VerTransacciones
             // Ordenar las transacciones por fecha de manera descendente
             return transacciones.OrderByDescending(t => t.FechaHora).ToList();
         }
+
 
     }
 }
