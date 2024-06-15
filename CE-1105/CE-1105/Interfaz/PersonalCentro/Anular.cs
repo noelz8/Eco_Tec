@@ -163,6 +163,11 @@ namespace CE_1105.Interfaz
             }
         }
 
+        private void Anular_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnAnularRegresar_Click(object sender, EventArgs e)
         {
             VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
