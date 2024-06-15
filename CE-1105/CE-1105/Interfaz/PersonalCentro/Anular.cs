@@ -163,16 +163,6 @@ namespace CE_1105.Interfaz
             }
         }
 
-<<<<<<< Updated upstream
-
-
-        private void Anular_Load(object sender, EventArgs e)
-        {
-
-        }
-
-=======
->>>>>>> Stashed changes
         private void btnAnularRegresar_Click(object sender, EventArgs e)
         {
             VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();

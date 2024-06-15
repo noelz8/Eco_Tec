@@ -59,7 +59,7 @@ namespace CE_1105.Logica.VerTransacciones
                 }
 
                 // Filtrar por centro de acopio y rango de fechas o misma fecha
-                if (partes[2] == centroAcopio && (fecha >= fechaInicio && fecha <= fechaFin || (fechaInicio.Date == fechaFin.Date && fecha.Date == fechaInicio.Date)))
+                if (partes[2] == centroAcopio && (fecha >= fechaInicio && fecha <= fechaFin ||  (fechaInicio.Date == fechaFin.Date && fecha.Date == fechaInicio.Date)))
                 {
                     var transaccion = new ManejoTransaccion
                     {

@@ -43,7 +43,7 @@ namespace CE_1105.Logica.VerTransacciones
                 }
 
                 // Filtrar por rango de fechas o misma fecha
-                if ((fecha >= fechaInicio && fecha <= fechaFin) || (fechaInicio.Date == fechaFin.Date && fecha.Date == fechaInicio.Date))
+                if ((fecha >= fechaInicio && fecha <= fechaFin)||(fechaInicio.Date == fechaFin.Date && fecha.Date == fechaInicio.Date))
                 {
                     var materialesBuilder = new StringBuilder();
                     for (int i = 5; i < partes.Length; i += 3)
