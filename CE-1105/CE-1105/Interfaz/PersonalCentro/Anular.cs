@@ -163,6 +163,7 @@ namespace CE_1105.Interfaz
             }
         }
 
+<<<<<<< Updated upstream
 
 
         private void Anular_Load(object sender, EventArgs e)
@@ -170,16 +171,13 @@ namespace CE_1105.Interfaz
 
         }
 
+=======
+>>>>>>> Stashed changes
         private void btnAnularRegresar_Click(object sender, EventArgs e)
         {
             VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
             vistaCentroAcopio.Show();
             this.Close();
-        }
-
-        private void dataGridViewMateriales_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
