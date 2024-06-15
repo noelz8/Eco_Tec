@@ -30,7 +30,7 @@ namespace CE_1105
             string IDE = TBIde.Text;
 
             ValidacionCentro validadorDatos = new ValidacionCentro();
-            string resultado = validadorDatos.ValidadacionCentro(IDE, seleccionComboBox, Contacto, Ubicacion, estadoCheckBox);
+            string resultado = validadorDatos.ValidadacionCentro(IDE, seleccionComboBox, Contacto, estadoCheckBox, Ubicacion);
 
             if (resultado.Contains("No válido"))
             {
@@ -39,7 +39,7 @@ namespace CE_1105
             else
             {
                 LimpiarControles();
-                validadorDatos.EscribirDatosEnArchivo(IDE, seleccionComboBox, Contacto, Ubicacion, estadoCheckBox);
+                validadorDatos.EscribirDatosEnArchivo(IDE, seleccionComboBox, Contacto, estadoCheckBox, Ubicacion);
                 MessageBox.Show($"Los datos son válidos.\nResultado de la validación: {resultado}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }   
         }
