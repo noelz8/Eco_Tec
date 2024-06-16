@@ -13,7 +13,7 @@ using System.Windows.Forms;
 public class ValidacionCentro
 {
     // Método para validar los datos y retornar el estado de cada dato
-    public string ValidadacionCentro(string IDE, string Nombre_Sede, string Contacto, string Ubicacion, bool estadoCheckBox)
+    public string ValidadacionCentro(string IDE, string Nombre_Sede, string Contacto, bool estadoCheckBox, string Ubicacion)
     {
         // Llama a las funciones de validación para cada dato
         string sedeValida = SedeCorrecta(Nombre_Sede); // SedeCorrecta retorna el string de la sede si es válido, null en caso contrario
@@ -23,7 +23,7 @@ public class ValidacionCentro
         string identificacion = VerificaIde(IDE);
 
         // Construye el mensaje de resultado
-        string resultado = $"Identificacion: {identificacion}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoCheckBoxString}, Provincia: {estadoSeleccion}";
+        string resultado = $"Identificacion: {identificacion}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoCheckBoxString}, Ubicación: {estadoSeleccion}";
 
         return resultado;
     }
@@ -82,9 +82,9 @@ public class ValidacionCentro
         }
     }
 
-    public void EscribirDatosEnArchivo(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
+    public void EscribirDatosEnArchivo(string IDE, string Nombre_Sede, string Contacto, bool estadoCheckBox, string seleccionComboBox)
     {
-        LeerEscribir.EscribirDatosEnArchivoCentro(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
+        LeerEscribir.EscribirDatosEnArchivoCentro(IDE, Nombre_Sede, Contacto, estadoCheckBox, seleccionComboBox);
     }
 
     public string VerificaIde(string IDE)

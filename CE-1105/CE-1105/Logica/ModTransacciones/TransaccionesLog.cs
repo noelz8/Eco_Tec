@@ -15,34 +15,50 @@ namespace CE_1105.Logica.Transacciones
         // Método para cargar materiales en un ComboBox desde un archivo de texto
         public static void CargarMateriales(ComboBox comboBox)
         {
-            // Ruta del archivo de texto
-            string filePath = Constantes.RutaArchivoMateriales;
-
-            // Leer y procesar el archivo de texto
-            if (File.Exists(filePath))
+            try
             {
-                string[] lines = File.ReadAllLines(filePath);
-                foreach (string line in lines)
+                // Ruta del archivo de texto
+                string filePath = Constantes.RutaArchivoMateriales;
+
+                // Leer y procesar el archivo de texto
+                if (File.Exists(filePath))
                 {
-                    string[] parts = line.Split(',');
-                    if (parts.Length >= 7)
+                    string[] lines = File.ReadAllLines(filePath);
+                    foreach (string line in lines)
                     {
-                        // Comprobar si el material está activo
-                        bool isActive = bool.Parse(parts[4]);
-                        if (isActive)
+                        string[] parts = line.Split(',');
+                        if (parts.Length >= 7)
                         {
-                            // Agregar la información relevante al ComboBox
-                            string displayText = $"{parts[0]}, {parts[1]}, {parts[2]}, {parts[3]}, {parts[6]}";
-                            comboBox.Items.Add(displayText);
+                            // Comprobar si el material está activo
+                            bool isActive = bool.Parse(parts[4]);
+                            if (isActive)
+                            {
+                                // Agregar la información relevante al ComboBox
+                                string displayText = $"{parts[0]}, {parts[1]}, {parts[2]}, {parts[3]}, {parts[6]}";
+                                comboBox.Items.Add(displayText);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("El archivo de materiales no se encuentra en la ruta especificada.");
+                }
             }
-            else
+            catch (FileNotFoundException ex)
             {
                 MessageBox.Show("El archivo de materiales no se encuentra en la ruta especificada.");
             }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("El formato de algunos datos en el archivo no es válido.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+            }
         }
+
 
         // Método para cargar centros de acopio en un ComboBox desde un archivo de texto
         public static void CargarCentros(ComboBox comboBox)

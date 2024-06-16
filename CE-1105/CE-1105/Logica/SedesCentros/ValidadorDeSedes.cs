@@ -6,7 +6,7 @@ using CE_1105.Logica;
 public class ValidadorDeSedes
 {
     // Método para validar los datos y retornar el estado de cada dato
-    public string ValidarDatos(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
+    public string ValidarDatos(string IDE, string Nombre_Sede, string Contacto, bool estadoCheckBox, string seleccionComboBox)
     {
         // Llama a las funciones de validación para cada dato
         //string Identificacion = GenerateUniqueKey(); // Usa ValidarTexto para evaluar correctamente
@@ -16,7 +16,7 @@ public class ValidadorDeSedes
         string estadoCheckBoxString = ValidarEstado(estadoCheckBox);
 
         // Construye el mensaje de resultado
-        string resultado = $"Identificacion: {IDE}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoSeleccion}, Provincia: {estadoCheckBoxString}";
+        string resultado = $"Identificacion: {IDE}, Sede: {sedeValida ?? "No válido"}, Contacto: {contactoValido}, Estado: {estadoCheckBoxString }, Provincia: {estadoSeleccion}";
 
         return resultado;
     }
@@ -71,7 +71,7 @@ public class ValidadorDeSedes
         }
     public static void EscribirDatosEnArchivo(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
     {
-        LeerEscribir.EscribirDatosEnArchivoSede(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
+        LeerEscribir.EscribirDatosEnArchivoSede(IDE, Nombre_Sede, Contacto, estadoCheckBox, seleccionComboBox);
     }
 }
 

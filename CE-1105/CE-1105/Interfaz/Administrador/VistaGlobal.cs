@@ -63,7 +63,7 @@ namespace CE_1105.Interfaz
         {
             //VistaDesarrollador vistaDesarrollador = new VistaDesarrollador();
             //vistaDesarrollador.Show();
-            VistaAdministrador vistaAdministrador = new VistaAdministrador();   
+            VistaAdministrador vistaAdministrador = new VistaAdministrador();
             vistaAdministrador.Show();
             this.Close();
         }

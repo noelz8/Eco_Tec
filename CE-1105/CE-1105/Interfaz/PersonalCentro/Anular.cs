@@ -163,8 +163,6 @@ namespace CE_1105.Interfaz
             }
         }
 
-
-
         private void Anular_Load(object sender, EventArgs e)
         {
 
@@ -175,11 +173,6 @@ namespace CE_1105.Interfaz
             VistaCentroAcopio vistaCentroAcopio = new VistaCentroAcopio();
             vistaCentroAcopio.Show();
             this.Close();
-        }
-
-        private void dataGridViewMateriales_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

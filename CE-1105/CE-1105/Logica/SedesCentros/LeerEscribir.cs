@@ -7,7 +7,7 @@ using CE_1105.Logica;
 
 public class LeerEscribir 
 {
-    public static void EscribirDatosEnArchivoSede(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
+    public static void EscribirDatosEnArchivoSede(string IDE, string Nombre_Sede, string Contacto, bool estadoCheckBox, string seleccionComboBox)
     {
         Nombre_Sede = Nombre_Sede.Replace(" ", "-");
         // Obtener la ruta de la carpeta de la aplicación
@@ -21,7 +21,7 @@ public class LeerEscribir
             writer.Write($"{IDE}, {Nombre_Sede}, {Contacto}, {seleccionComboBox}, {estadoCheckBox}\n");
         }
     }
-    public static void EscribirDatosEnArchivoCentro(string IDE, string Nombre_Sede, string Contacto, string seleccionComboBox, bool estadoCheckBox)
+    public static void EscribirDatosEnArchivoCentro(string IDE, string Nombre_Sede, string Contacto,  bool estadoCheckBox, string seleccionComboBox)
     {
         // Obtener la ruta de la carpeta de la aplicación
         string rutaCarpetaAplicacion = Application.StartupPath;

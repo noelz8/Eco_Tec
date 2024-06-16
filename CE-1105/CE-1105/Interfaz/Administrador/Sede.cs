@@ -46,7 +46,7 @@ namespace CE_1105
             string IDE = GenerateUniqueKey();
 
             // Llama a la función de validación con los datos recogidos
-            string resultado = validadorDatos.ValidarDatos(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
+            string resultado = validadorDatos.ValidarDatos(IDE, Nombre_Sede, Contacto, estadoCheckBox, seleccionComboBox);
 
             // Determina si los datos son válidos basándote en el resultado
             // Determina si los datos son válidos basándote en el resultado
@@ -59,7 +59,7 @@ namespace CE_1105
             {
                 // Si no hay "No válido" en el resultado, muestra un mensaje de éxito
                 LimpiarControles();
-                LeerEscribir.EscribirDatosEnArchivoSede(IDE, Nombre_Sede, Contacto, seleccionComboBox, estadoCheckBox);
+                LeerEscribir.EscribirDatosEnArchivoSede(IDE, Nombre_Sede, Contacto, estadoCheckBox, seleccionComboBox);
                 MessageBox.Show($"Los datos son válidos.\nResultado de la validación: {resultado}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 

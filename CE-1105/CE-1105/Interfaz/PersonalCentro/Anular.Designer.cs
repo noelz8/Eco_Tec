@@ -46,89 +46,92 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Black", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(339, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(271, 12);
             label1.Name = "label1";
-            label1.Size = new Size(791, 58);
+            label1.Size = new Size(661, 48);
             label1.TabIndex = 0;
             label1.Text = "Seleccione transaccion a Eliminar";
             // 
             // dataGridViewMateriales
             // 
-            dataGridViewMateriales.ReadOnly = true;
             dataGridViewMateriales.AllowUserToAddRows = false;
             dataGridViewMateriales.AllowUserToResizeColumns = false;
             dataGridViewMateriales.AllowUserToResizeRows = false;
             dataGridViewMateriales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMateriales.Columns.AddRange(new DataGridViewColumn[] { ID, Centro, Fecha, Material, Cantidad, Precio, Total });
-            dataGridViewMateriales.Location = new Point(50, 114);
-            dataGridViewMateriales.Margin = new Padding(4);
+            dataGridViewMateriales.Location = new Point(40, 91);
             dataGridViewMateriales.Name = "dataGridViewMateriales";
+            dataGridViewMateriales.ReadOnly = true;
             dataGridViewMateriales.RowHeadersVisible = false;
             dataGridViewMateriales.RowHeadersWidth = 51;
             dataGridViewMateriales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewMateriales.Size = new Size(1266, 534);
+            dataGridViewMateriales.Size = new Size(1013, 427);
             dataGridViewMateriales.TabIndex = 1;
-            dataGridViewMateriales.CellContentClick += dataGridViewMateriales_CellContentClick;
             // 
             // ID
             // 
             ID.HeaderText = "ID";
             ID.MinimumWidth = 6;
             ID.Name = "ID";
-            ID.Width = 66;
+            ID.ReadOnly = true;
+            ID.Width = 53;
             // 
             // Centro
             // 
             Centro.HeaderText = "Centro";
             Centro.MinimumWidth = 6;
             Centro.Name = "Centro";
-            Centro.Width = 101;
+            Centro.ReadOnly = true;
+            Centro.Width = 82;
             // 
             // Fecha
             // 
             Fecha.HeaderText = "Fecha de Registro";
             Fecha.MinimumWidth = 6;
             Fecha.Name = "Fecha";
-            Fecha.Width = 172;
+            Fecha.ReadOnly = true;
+            Fecha.Width = 143;
             // 
             // Material
             // 
             Material.HeaderText = "Material";
             Material.MinimumWidth = 6;
             Material.Name = "Material";
-            Material.Width = 111;
+            Material.ReadOnly = true;
+            Material.Width = 93;
             // 
             // Cantidad
             // 
             Cantidad.HeaderText = "Cantidad";
             Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
-            Cantidad.Width = 119;
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 98;
             // 
             // Precio
             // 
             Precio.HeaderText = "Tec-colones";
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
-            Precio.Width = 140;
+            Precio.ReadOnly = true;
+            Precio.Width = 117;
             // 
             // Total
             // 
             Total.HeaderText = "Total";
             Total.MinimumWidth = 6;
             Total.Name = "Total";
-            Total.Width = 85;
+            Total.ReadOnly = true;
+            Total.Width = 71;
             // 
             // btnAnular
             // 
             btnAnular.BackColor = SystemColors.MenuHighlight;
             btnAnular.ForeColor = SystemColors.ControlLightLight;
-            btnAnular.Location = new Point(389, 688);
-            btnAnular.Margin = new Padding(4);
+            btnAnular.Location = new Point(311, 550);
             btnAnular.Name = "btnAnular";
-            btnAnular.Size = new Size(188, 74);
+            btnAnular.Size = new Size(150, 59);
             btnAnular.TabIndex = 13;
             btnAnular.Text = "Anular";
             btnAnular.UseVisualStyleBackColor = false;
@@ -138,10 +141,9 @@
             // 
             btnAnularRegresar.BackColor = SystemColors.MenuHighlight;
             btnAnularRegresar.ForeColor = SystemColors.ButtonFace;
-            btnAnularRegresar.Location = new Point(661, 688);
-            btnAnularRegresar.Margin = new Padding(4);
+            btnAnularRegresar.Location = new Point(529, 550);
             btnAnularRegresar.Name = "btnAnularRegresar";
-            btnAnularRegresar.Size = new Size(185, 74);
+            btnAnularRegresar.Size = new Size(148, 59);
             btnAnularRegresar.TabIndex = 14;
             btnAnularRegresar.Text = "Regresar";
             btnAnularRegresar.UseVisualStyleBackColor = false;
@@ -149,17 +151,16 @@
             // 
             // Anular
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1369, 816);
+            ClientSize = new Size(1095, 653);
             Controls.Add(btnAnularRegresar);
             Controls.Add(btnAnular);
             Controls.Add(dataGridViewMateriales);
             Controls.Add(label1);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Anular";
             Text = "Anular";
-            Load += Anular_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewMateriales).EndInit();
             ResumeLayout(false);
             PerformLayout();

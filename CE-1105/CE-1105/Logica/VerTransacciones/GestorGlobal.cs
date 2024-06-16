@@ -42,8 +42,8 @@ namespace CE_1105.Logica.VerTransacciones
                     continue; // Saltar a la siguiente línea si hay un error de formato
                 }
 
-                // Filtrar por rango de fechas
-                if (fecha >= fechaInicio && fecha <= fechaFin)
+                // Filtrar por rango de fechas o misma fecha
+                if ((fecha >= fechaInicio && fecha <= fechaFin)||(fechaInicio.Date == fechaFin.Date && fecha.Date == fechaInicio.Date))
                 {
                     var materialesBuilder = new StringBuilder();
                     for (int i = 5; i < partes.Length; i += 3)
@@ -70,6 +70,7 @@ namespace CE_1105.Logica.VerTransacciones
             // Ordenar las transacciones por fecha de manera descendente
             return transacciones.OrderByDescending(t => t.FechaHora).ToList();
         }
+
     }
 }
 
